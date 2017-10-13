@@ -1,0 +1,105 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+}
+
+#logo {
+    width: 50%;
+}
+
+h1 {
+    font-family: 'Exo', sans-serif;
+    text-align: center;
+    font-size: 30px;
+}
+
+li {
+    list-style: none;
+}
+
+li:before {
+    content: '';
+    background-color: #c83737;
+    display: inline-block;
+    position: relative;
+    height: 8px;
+    width: 8px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    margin-right: 8px;
+    top: 2px;
+    margin-bottom: 3px;
+}
+
+ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.btn {
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: 'Exo', sans-serif;
+    color: #c83737;
+    background-color: #ffffff;
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+    border: solid #000000 7px;
+    text-decoration: none;
+}
+
+a.btn {
+    width: auto;
+    display: inline-block;
+    margin: 5px 5px 10px 5px;
+}
+
+.btn:hover {
+    background: #c83737;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.center {
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+.indent {
+    padding-left: 2em;
+}
+
+@media (min-width: 350px) {
+    h1 {
+        font-size: 45px;
+    }
+    body {
+        margin: 1em;
+    }
+}
+
+@media (min-width: 450px) {
+    h1 {
+        font-size: 60px;
+    }
+    body {
+        margin: 2em;
+    }
+}
+
+@media (min-width: 675px) {
+    .main {
+        width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

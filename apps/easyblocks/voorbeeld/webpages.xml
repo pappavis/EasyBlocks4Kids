@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webpages>
+  <course id="1">
+    <title>JavaScript Course</title>
+    <url>http://coursesweb.net/javascript</url>
+  </course>
+  <course id="2">
+    <title>jQuery Course</title>
+    <url>http://coursesweb.net/jquery/jquery-tutorials</url>
+  </course>
+</webpages>

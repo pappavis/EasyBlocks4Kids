@@ -1,0 +1,636 @@
+<html manifest=node.manifest>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Exo:900|Source+Sans+Pro" rel="stylesheet">
+    <meta property="og:url" content="https://easylab4kids.nl" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EasyLab4Kids" />
+    <meta property="og:description" content="Gamified ICT voor kinderen" />
+    <meta property="og:image" content="https://i.imgur.com/MOH3DSb.png" />
+    <meta property="twitter:title" content="EasyLab4Kids" />
+    <meta property="twitter:description" content="Gamified ICT voor kinderen" />
+    <meta property="twitter:image" content="https://i.imgur.com/MOH3DSb.png" />
+
+    <meta http-equiv="cache-control" content="no-cache" />
+
+
+    <meta property="description" content="Gamified ICT voor kinderen" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/dropdown.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    <title>EasyLab4Kids: Visueel programmeeromgeving door Michiel Erasmus</title>
+    <script type="text/javascript" src="../../blockly_compressed.js"></script>
+    <script type="text/javascript" src="../../blocks_compressed.js"></script>
+    <script type="text/javascript" src="../../arduino_compressed.js"></script>
+    <script type="text/javascript" src="../../msg/js/en.js"></script>
+    <script type="text/javascript" src="Blob.js"></script>
+    <script type="text/javascript" src="spin.js"></script>
+    <script type="text/javascript" src="FileSaver.min.js"></script>
+    <script type="text/javascript" src="blockly_helper.js"></script>
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-909801-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script>
+        function myUpdateFunction() {
+            var code2 = Blockly.JavaScript.workspaceToCode();
+            // document.getElementById('textarea').value = code;
+            console.log("----");
+            console.log("--Frontend ");
+            console.dir(code2);
+            console.log("----");
+        }
+
+        function naarXML() {
+            return Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace));
+        }
+    </script>
+
+    <script>
+        /**
+         * List of tab names.
+         * @private
+         */
+        var TABS_ = ['blocks', 'arduino', 'xml'];
+
+        var selected = 'blocks';
+
+        /**
+         * Switch the visible pane when a tab is clicked.
+         * @param {string} clickedName Name of tab clicked.
+         */
+        function tabClick(clickedName) {
+            // If the XML tab was open, save and render the content.
+            if (document.getElementById('tab_xml').className == 'tabon') {
+                var xmlTextarea = document.getElementById('content_xml');
+                var xmlText = xmlTextarea.value;
+                var xmlDom = null;
+                try {
+                    xmlDom = Blockly.Xml.textToDom(xmlText);
+                } catch (e) {
+                    var q =
+                        window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
+                    if (!q) {
+                        // Leave the user on the XML tab.
+                        return;
+                    }
+                }
+                if (xmlDom) {
+                    Blockly.mainWorkspace.clear();
+                    Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+                }
+            }
+
+            if (document.getElementById('tab_blocks').className == 'tabon') {
+                Blockly.mainWorkspace.setVisible(false);
+            }
+            // Deselect all tabs and hide all panes.
+            for (var i = 0; i < TABS_.length; i++) {
+                var name = TABS_[i];
+                document.getElementById('tab_' + name).className = 'taboff';
+                document.getElementById('content_' + name).style.visibility = 'hidden';
+            }
+
+            // Select the active tab.
+            selected = clickedName;
+            document.getElementById('tab_' + clickedName).className = 'tabon';
+            // Show the selected pane.
+            document.getElementById('content_' + clickedName).style.visibility =
+                'visible';
+            renderContent();
+            if (clickedName == 'blocks') {
+                Blockly.mainWorkspace.setVisible(true);
+            }
+            Blockly.fireUiEvent(window, 'resize');
+        }
+
+        /**
+         * Populate the currently selected pane with content generated from the blocks.
+         */
+        function renderContent() {
+            var content = document.getElementById('content_' + selected);
+            // Initialize the pane.
+            if (content.id == 'content_blocks') {
+                // If the workspace was changed by the XML tab, Firefox will have performed
+                // an incomplete rendering due to Blockly being invisible.  Rerender.
+                Blockly.mainWorkspace.render();
+            } else if (content.id == 'content_xml') {
+                var xmlTextarea = document.getElementById('content_xml');
+                var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+                var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+                xmlTextarea.value = xmlText;
+                xmlTextarea.focus();
+                /*} else if (content.id == 'content_javascript') {
+                  content.innerHTML = Blockly.JavaScript.workspaceToCode();
+                } else if (content.id == 'content_dart') {
+                  content.innerHTML = Blockly.Dart.workspaceToCode();
+                } else if (content.id == 'content_python') {
+                  content.innerHTML = Blockly.Python.workspaceToCode();*/
+            } else if (content.id == 'content_arduino') {
+                //content.innerHTML = Blockly.Arduino.workspaceToCode();
+                var arduinoTextarea = document.getElementById('content_arduino');
+                arduinoTextarea.value = Blockly.Arduino.workspaceToCode();
+                arduinoTextarea.focus();
+            }
+        }
+
+        /**
+         * Compute the absolute coordinates and dimensions of an HTML element.
+         * @param {!Element} element Element to match.
+         * @return {!Object} Contains height, width, x, and y properties.
+         * @private
+         */
+        function getBBox_(element) {
+            var height = element.offsetHeight;
+            var width = element.offsetWidth;
+            var x = 0;
+            var y = 0;
+            do {
+                x += element.offsetLeft;
+                y += element.offsetTop;
+                element = element.offsetParent;
+            } while (element);
+            return {
+                height: height,
+                width: width,
+                x: x,
+                y: y
+            };
+        }
+
+        /**
+         * Initialize Blockly.  Called on page load.
+         */
+        function init() {
+            //window.onbeforeunload = function() {
+            //  return 'Leaving this page will result in the loss of your work.';
+            //};
+
+            document.getElementById('RobotAdres1').value = getEasyServerURL();
+
+            var container = document.getElementById('content_area');
+            var onresize = function(e) {
+                var bBox = getBBox_(container);
+                for (var i = 0; i < TABS_.length; i++) {
+                    var el = document.getElementById('content_' + TABS_[i]);
+                    el.style.top = bBox.y + 'px';
+                    el.style.left = bBox.x + 'px';
+                    // Height and width need to be set, read back, then set again to
+                    // compensate for scrollbars.
+                    el.style.height = bBox.height + 'px';
+                    el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
+                    el.style.width = bBox.width + 'px';
+                    el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
+                }
+                // Make the 'Blocks' tab line up with the toolbox.
+                if (Blockly.mainWorkspace.toolbox_.width) {
+                    document.getElementById('tab_blocks').style.minWidth =
+                        (Blockly.mainWorkspace.toolbox_.width - 38) + 'px';
+                    // Account for the 19 pixel margin and on each side.
+                }
+            };
+            window.addEventListener('resize', onresize, false);
+
+            var toolbox = document.getElementById('toolbox');
+            Blockly.inject(document.getElementById('content_blocks'), {
+                grid: {
+                    spacing: 25,
+                    length: 3,
+                    colour: '#ccc',
+                    snap: true
+                },
+                media: '../../media/',
+                toolbox: toolbox
+            });
+
+            auto_save_and_restore_blocks();
+
+            //load from url parameter (single param)
+            //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
+            var dest = unescape(location.search.replace(/^.*\=/, '')).replace(/\+/g, " ");
+            if (dest) {
+                load_by_url(dest);
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript" src="predefinedVars.js"></script>
+
+
+    <style>
+        body,
+        h1 {
+            font-family: "Raleway", sans-serif
+        }
+        
+        body,
+        html {
+            height: 100%
+        }
+        
+        .bgimg {
+            background-image: url('./w3images/forestbridge.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+        /* Tabs */
+        
+        #tabRow>td {
+            border: 1px solid #ccc;
+        }
+        
+        td.tabon {
+            border-bottom-color: #ddd !important;
+            background-color: #ddd;
+            padding: 5px 19px;
+        }
+        
+        td.taboff {
+            cursor: pointer;
+            padding: 5px 19px;
+        }
+        
+        td.taboff:hover {
+            background-color: #eee;
+        }
+        
+        td.tabmin {
+            border-top-style: none !important;
+            border-left-style: none !important;
+            border-right-style: none !important;
+        }
+        
+        td.tabmax {
+            border-top-style: none !important;
+            border-left-style: none !important;
+            border-right-style: none !important;
+            width: 99%;
+            text-align: right;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        
+        .content {
+            visibility: hidden;
+            margin: 0;
+            padding: 1ex;
+            position: absolute;
+            direction: ltr;
+        }
+        
+        pre.content {
+            overflow: scroll;
+        }
+        
+        #content_blocks {
+            padding: 0;
+        }
+        
+        .blocklySvg {
+            border-top: none !important;
+        }
+        
+        #content_xml {
+            resize: none;
+            outline: none;
+            border: none;
+            font-family: monospace;
+            overflow: scroll;
+        }
+        
+        button {
+            padding: 1px 1em;
+            font-size: 90%;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: #eee;
+            color: black;
+        }
+        
+        button.launch {
+            border: 1px solid #d43;
+            background-color: #d43;
+            color: white;
+        }
+        
+        button:active {
+            border: 1px solid blue !important;
+        }
+        
+        button:hover {
+            box-shadow: 2px 2px 5px #888;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <div class="bgimg w3-display-container w3-animate-opacity w3-responsive w3-round-small">
+        <table height="100%" width="100%">
+            <tr class="w3-display-container" style="max-width:1500px;">
+                <td>
+                    <div class="w3-wide w3-animate-top w3-border-green">
+                        <h3 class="w3-col w3-dropdown-hover"><a href="http://erasmus-ict.nl/easylab4kids">EasyLab4Kids</a> &gt; voor Arduino|Raspberry pi|BBC Microbit|Ubuntu|NodeMCU</h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="w3-padding w3-text-deep-purple">
+                        <h3>versie: 1.0 release: 2017.10.11 door Michiel Erasmus</h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="w3-padding w3-card-2 w3-text-deep-purple">
+                    <span id="spanChangelog1"><a href="../../CHANGELOG.txt" target="_blank">wijzig log</a></span>
+                    <span id="spanText" class="w3-padding">EasyServer: <input type="text" id="RobotAdres1" class="w3-light-grey w3-text-black" value=""> <button onclick="getEasyServerURL()" class="w3-button w3-light-grey">Opslaan URL</button></span>
+                    <span id="spanHandleiding1"><a href="./handleiding/bladsy/setup_e4k_nl.html" target="_blank" class="w3-border-grey">Handleiding</a></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%" class="w3-row-padding w3-padding w3-responsive w3-animate-right">
+                        <tr id="tabRow" height="1em">
+                            <td id="tab_blocks" class="tabon w3-sidebar w3-animate-left" onclick="tabClick('blocks')"><i>Kies een blokje:</i></td>
+                            <td class="tabmin">&nbsp;</td>
+                            <!--td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">JavaScript</td>
+                    <td class="tabmin">&nbsp;</td-->
+                            <!--td id="tab_dart" class="taboff" onclick="tabClick(this.id)">Dart</td>
+                    <td class="tabmin">&nbsp;</td>
+                    <td id="tab_python" class="taboff" onclick="tabClick(this.id)">Python</td>
+                    <td class="tabmin">&nbsp;</td-->
+                            <td id="tab_arduino" class="taboff w3-display-topleft w3-padding w3-border-blue" onclick="tabClick('arduino')">Programmacode</td>
+                            <td class="tabmin">&nbsp;</td>
+                            <td id="tab_xml" class="taboff w3-display-topleft w3-black w3-padding" onclick="">&nbsp;</td-->
+                                <td class="tabmax w3-animate-right">
+                                    <button type="button" onclick="uploadClick()" class="w3-button w3-border-yellow w3-red launch">UITVOEREN!</button>
+                                    <button type="button" onclick="resetClick()" class="w3-button w3-light-grey">Terugzetten</button>
+                                    <button onclick="discard()" class="w3-button w3-light-grey">Weggooien</button>
+                                    <button onclick="saveCode()" class="w3-button w3-border-grey w3-light-grey">Opslaan programmacode</button>
+                                    <button onclick="save()" class="w3-button w3-black">Opslaan</button>
+                                    <button id="fakeload" class="w3-button w3-light-grey w3-hide-small">Openen</button>
+                                    <!--button id="loadURL" onclick="loadFromWeb()" class="w3-button w3-light-grey w3-hide-small">Open voorbeeld</button-->
+                                    <input type="file" id="load" style="display: none;" />
+                                    <!-- button class="launch" onclick="runJS()">Codetest</button-->
+                                </td>
+                        </tr>
+                    </table>
+                    </td>
+            </tr>
+            <tr>
+                <td height="99%" id="content_area" class="fa"></td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="w3-table">
+        <tr>
+            <td>
+                <div id="content_blocks" class="content w3-col l3 m6 w3-margin-bottom w3-animate-right"></div>
+                <textarea id="content_arduino" class="content container content w3-col l3 m6 w3-margin-bottom" readonly wrap="off"></textarea>
+                <textarea id="content_xml" class="content" wrap="off"></textarea>
+            </td>
+        </tr>
+    </table>
+
+    <xml id="toolbox" style="display: none">
+        <category name="VERPLICHT!!">
+            <block type="procedures_easylab4kids_boards"></block>
+            <block type="windows_compoort"></block>
+        </category>
+        <sep></sep>
+        <category name="Logies JA/NEE">
+            <block type="ja_nee_null"></block>
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_null"></block>
+        </category>
+        <category name="Beheer en tellers">
+            <block type="process_exit"></block>
+            <block type="pauze">
+                <value name="PAUZE">
+                    <block type="math_number">
+                        <field name="NUM">500</field>
+                    </block>
+                </value>
+            </block>
+            <block type="base_delay">
+                <value name="DELAY_TIME">
+                    <block type="math_number">
+                        <field name="NUM">1000</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_for">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+        </category>
+        <category name="Wiskundig">
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+            <block type="base_map">
+                <value name="DMAX">
+                    <block type="math_number">
+                        <field name="NUM">180</field>
+                    </block>
+                </value>
+            </block>
+        </category>
+        <category name="Tekst hulpjes">
+            <block type="text"></block>
+            <block type="text_append"></block>
+            <block type="text_create_join_item"></block>
+            <block type="text_join"></block>
+            <block type="text_create_join_item"></block>
+            <block type="text_length"></block>
+            <block type="text_getSubstring"></block>
+            <block type="text_prompt"></block>
+            <block type="text_prompt_ext"></block>
+            <block type="random1"></block>
+            <block type="math_constant"></block>
+        </category>
+        <category name="Variables" custom="VARIABLE"> </category>
+        <category name="Functies" custom="PROCEDURE"> </category>
+
+        <sep></sep>
+        <category name="EasyLab4Kids">
+            <block type="declare_potentiometer"></block>
+            <block type="event_potentiometer"></block>
+            <!--block type="IR_Reflect_Array"></block-->
+            <block type="IO_poorten_easylab_nano_lijst"></block>
+            <!--block type="I2C_LCD"></block-->
+        </category>
+
+        <category name="Beeldscherm">
+            <block type="declare_I2C_LCD"></block>
+            <block type="declare_matrix_led"></block>
+        </category>
+
+        <category name="Beeldscherm wanneer">
+            <block type="cmd_I2C_LCD">
+            </block>
+            <block type="cmd_I2C_LCD_lijst"></block>
+            <block type="cmd_matrix_led"></block>
+            <block type="cmd_matrix_doen_lijst"></block>
+            <block type="sprite_build"></block>
+            <!--block type="easylabs_image_create"></block-->
+        </category>
+
+        <category name="LEDjes en geluid">
+            <block type="ledje"></block>
+            <block type="ledje_knipper_fade"></block>
+            <block type="piezo_muziek"></block>
+            <!--block type="piezo1"></block-->
+            <block type="declare_piezo1"></block>
+            <block type="cmd_piezo1"></block>
+            <block type="cmd_piezo1_beat_lijst"></block>
+            <block type="cmd_piezo1_tempo_lijst"></block>
+            <block type="cmd_piezo1_voorbeeldlied_lijst"></block>
+        </category>
+
+        <category name="Schakelaars">
+            <!--block type="toggleswitch_close_open"></block-->
+            <block type="declare_spdt_skakelaar"></block>
+            <block type="declare_button_Down_hold_up"></block>
+        </category>
+
+        <category name="Schakelaars wanneer">
+            <block type="event_button_Down_hold_up"></block>
+            <block type="event_spdt_skakelaar"></block>
+        </category>
+
+        <category name="Sensoren">
+            <block type="declare_motion_data_change_motionstart"></block>
+            <block type="declare_proximity_sensor_data"></block>
+            <block type="declare_relay"></block>
+            <block type="declare_hygrometer"></block>
+            <block type="declare_barometer"></block>
+            <block type="declare_IR_Reflect_Array"></block>
+        </category>
+
+        <category name="Sensoren wanneer">
+            <block type="event_motion_data_change_motionstart"></block>
+            <block type="event_proximity_sensor_data"></block>
+            <block type="cmd_relay"></block>
+            <block type="cmd_relay_staat_lijst"></block>
+            <block type="event_hygrometer"></block>
+            <block type="event_barometer"></block>
+            <block type="event_IR_Reflect_Array"></block>
+            <block type="test_event_header"></block>
+        </category>
+
+        <category name="Sensoren overig">
+            <!--block type="proximity_sensor_data"></block-->
+            <block type="kompas"></block>
+            <block type="GPS"></block>
+            <block type="Orientatiemodule"></block>
+            <block type="CapacitiveTouch"></block>
+        </category>
+
+        <category name="Motor en servo">
+            <!--block type="servo1"></block-->
+            <block type="declare_servo1"></block>
+            <!--block type="motorshield_opdracht"></block-->
+            <block type="declare_motorshield"></block>
+            <block type="event_motor_lijst"></block>
+            <block type="cmd_motor_lijst"></block>
+        </category>
+
+        <category name="Motor wanneer">
+            <block type="event_motor"></block>
+            <block type="cmd_motorshield"></block>
+            <block type="event_board"></block>
+            <block type="event_board_lijst"></block>
+            <block type="cmd_servo1"></block>
+            <block type="servo1_actie_opdracht"></block>
+        </category>
+
+        <category name="IO aansluitingen">
+            <block type="IO_poorten"></block>
+            <block type="IO_poorten_GPIO_lijst"></block>
+            <block type="IO_poorten_bbc_microbit_lijst"></block>
+            <block type="IO_poorten_NodeMCU_lijst"></block>
+        </category>
+
+        <category name="IO optieslijst">
+            <block type="AlertMelding"></block>
+            <block type="datum_now"></block>
+            <block type="device_state"></block>
+            <block type="serial_print">
+                <value name="CONTENT">
+                    <block type="text">
+                        <field name="TEXT"></field>
+                    </block>
+                </value>
+            </block>
+        </category>
+        <sep></sep>
+        <category name="Geavanceerd IO">
+            <block type="declare_digitalReadWrite"></block>
+            <block type="ArduinoPinMode"></block>
+            <block type="cmd_digitalReadWrite"></block>
+            <block type="ArduinoReadCommands"></block>
+            <block type="ArduinoReadCommands_OUTPUT"></block>
+            <block type="declare_socketio"></block>
+        </category>
+
+        <category name="Geavanceerd wanneer">
+            <block type="event_digitalReadWrite"></block>
+            <block type="event_board"></block>
+            <block type="event_board_lijst"></block>
+        </category>
+
+    </xml>
+</body>
+
+</html>

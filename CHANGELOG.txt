@@ -1,0 +1,79 @@
+CHANGELOG EasyLab4kids  zie http://erasmus-ict.nl, contact MICHIEL ERASMUS tel: +31638369260
+=====================
+0.3.02001 2017.04.26
+ - toegevoegd: komponent LED fadein.
+
+0.3.03004 2017.04.28
+ - komponente veranderlikes wordt globaal aangemaak.
+ - komponente wat in  die 'board' is wrdt bo-aan gedeklareer sodat NodeJS die deklarasie kan uitvoer.
+
+0.3.04006 2017.04.30
+ - toegevoegd: Servo beheer.
+
+0.3.05009 2017.05.22
+ - wjziging: Input/output gaat Serial Print  naar console.
+ - wjziging: ondersteuning vir functions toegevoegd.
+ - toevoeging: HCR-SR401 afstandlesing moontlik in geheel applikasie (middels global veranderlikes).
+ - toevoeging: SPDT status in andere functies beschikbaar.
+ - Nota: functies moet voor baord_on_ready geplaas wordt.
+
+0.3.06008 2017.06.16
+ - toevoeging: piezo buzzer.
+ - toevoeging: aan-uit knop.
+ - toevoeging: kleurpallet blok [nog nie werkend].
+ - toevoeging: Frontend is responsive, geschikt voor mobiele apparaten (iPhone | Samsung)  [werksaamhede in uitvoering].
+ - wijziging: meer as één aan-uitknop kan gebruik wordt.
+ - wijziging: SPDT-skakelaar kan slegs aan of uit.
+ - wijziging: mogelijkheid om sensore waarden globaal te delen in functies.
+
+0.3.06009 2017.06.20
+ - toevoeging: Frontend codetester (eval) vir eindgebruiker. 
+ - toevoeging: Potentiometer sensor. 
+ - toevoeging: Plug-n-play upload en uitvoer EasyBlocks programma regstreeks op EasyLab4kids apparaat (benodigd: NodeJS).
+
+0.3.07010 2017.07.12
+ - toevoeging: Board support nou ook meerde COM-poorte en aansluitinge.
+ - toevoeging: I2C LCD scherm.
+
+0.3.07014 2017.07.25
+ - toevoeging: CHIP io support
+ - toevoeging: BBC Microbit button A, B en kompas support.
+ - toevoeging: Raspbery Pi  GPIO-poort support op Sonar, LCD en buttons.
+ - toevoeging: LEGO EV3 afstand sensor mogelijkheid te gebruik.
+ - BUGFIX: meerdere arduino's per computer moontlik.
+ - BUGFIX: I2C LCD scherm text posities kan aanwys.
+ - BUGFIX: Servo sweep en kan nu ook stop.
+
+0.3.07015 2017.08.23
+ - BUGFIX: MacOS USB-serialpoort name reggemaak.
+
+0.3.07022 2017.10.01
+ - toevoeging: Laai een EasyBlocks bestand van XML.
+ - toevoeging: GPS sensor.
+ - toevoeging: Adafruit BNO055 9DOF oreiëntatiesensor.
+ - toevoeging: Raspberry Pi GPIO-poorte regstreeks aanstuurbaar as jy 'n Linux bord gebruik.
+ - toevoeging: L293D motordiver support, soos Adafruit motorshield.
+ - toevoeging: DigitalRead en DigitalWrite is in aparte IO-poorte groep.
+ - toevoeging: Robot motorbeheer en events, opvang wanneer een motor byvb draait.
+ - wysiging:  gebeuetenisse van sonar en PIR in een aparte Sensor gebeurtenisgroep.
+
+0.3.07026 2017.10.10
+ - toevoeging: Relay support.
+ - toevoeging: 8x8 LED Matrix support.
+ - wysiging:  gebeuetenisse van SPDT knop en aan-uitknop.
+ - wysiging: alle sensoren het events.
+ - BUGFIX: robotmotors verstaan nou dat links = links
+
+ 1.0 2017.10.11
+ Eerste release volledig release.
+
+
+=====================
+KNOWN BUGS/ISSUES;
+
+=====================
+
+
+Meer info?
+- Kontak Michiel Erasmus
+- e-mail: thebapodcast@gmail.com
