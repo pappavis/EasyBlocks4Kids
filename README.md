@@ -26,7 +26,7 @@ Snelstart
 ```
 git clone http://github.com/pappavis/EasyBlocks4Kids
 ```
-2. Open bestand .\EasyBlocks4Kids\apps\easyblocks\index.html
+2. Open bestand ./EasyBlocks4Kids/apps/easyblocks/index.html
 3. Kliek en sleep jouw programma aan elkaar.
 4. Kies *Uitvoeren* om die program na jou microcontroller te upload
 
