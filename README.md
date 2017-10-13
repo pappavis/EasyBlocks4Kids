@@ -87,4 +87,4 @@ Live site kyk op http://erasmus-ict.nl/easylab4kids
 Vrae?
 ---
 * Kontak Michiel Erasmus op theBApodcast@gmail.com
-* Voorbeelde op https://www.facebook.com/EasyBlocks4Kids/
+* Voorbeelde op https://www.facebook.com/EasyBlocks4Kids/ <br/>
