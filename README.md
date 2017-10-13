@@ -1,5 +1,5 @@
 # EasyBlocks4Kids
-* Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids
+Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids
 <img src="https://i.imgur.com/MOH3DSb.png">
 
 
@@ -25,9 +25,10 @@ Die backend code is *Javascript* dus elke jan en sy maat kan dit lees en debug.
 
 EasyBlocks4Kids support
 ---
-##Sensore
+##Sensore##
  - Alle bekende en onbekende sensoren, soos HC-SR401 sonar, buzzers, L293D motor, LCD en LED Matrix skerms.
-##Microcontrollers en platforms
+ 
+##Microcontrollers en platforms##
  - Heel veel soos Arduino, Raspberry Pi, BBC Microbit, Tessel en veel meer!!
 
 Installasie vereistes
