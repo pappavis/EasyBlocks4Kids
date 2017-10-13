@@ -10,6 +10,8 @@ Wat is EasyBlocks4Kids
 ---
 Dit is visueel programmering vir microcontrollers soos Arduino, Raspberry Pi en BBC Microbit. Met support vir tientalle sensore en skerms.
 
+<img src="https://i.imgur.com/zrBxmlm.png" width="50%" hight="50%">
+
 Installasie vereistes
 ---
 1. Kinders programmering: GEEN vereistes. Website is 100% HTML/Javascript.
