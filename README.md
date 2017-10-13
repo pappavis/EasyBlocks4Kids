@@ -1,6 +1,7 @@
 # EasyBlocks4Kids
-Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids
+* Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids
 <img src="https://i.imgur.com/MOH3DSb.png">
+
 
 Auteur en bydraes
 ---
