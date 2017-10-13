@@ -17,11 +17,11 @@ Dit is visueel programmering vir microcontrollers soos Arduino, Raspberry Pi en 
 Hoe werk dit?
 ---
 Jy laai die webpagina op http://erasmus-ict.nl/easylab4kids en sleep dan jou program aanmekaar.
-Verolgens upload jy die program na jou Arduino of ander beheerder en waardeer die eindresultaat.
+Vervolgens upload jy die program na jou Arduino of ander beheerder en waardeer die eindresultaat.
 
-Met één muiskliek jouw code of op BBC icrobit, of op een EasyLab arduino draai. So *maklik*!! :)
-Jy oeft werklikwaar geen kode te herskryf. Eenmaal jou program met blokke gebou en hy is klaar vir elke ander gesupport platform.
-Die backend code is *Javascript* dus elke jan en sy maat kan dit lees en debug.
+Met één muiskliek jouw code of op BBC Microbit, of op een EasyLab arduino draai. So *maklik*!! :)
+Jy hoeft werklikwaar géén kode te herskryf. Eenmaal jou program met blokke gebou en hy is klaar vir elke ander gesupport platform. <br/>
+Die backend code is *Javascript* dus elke Jan en sy maat kan dit lees en debug.
 
 EasyBlocks4Kids support
 ---
