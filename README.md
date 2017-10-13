@@ -61,7 +61,7 @@ MacBook$ cd ~/EasyLab4Kids/EasyBlocks4Kids
 ```
 MacBook$ python ./build.py
 ```
-<img src="https://i.imgur.com/MNYVrBk.png" width="75%" height="75%">
+<img src="https://i.imgur.com/MNYVrBk.png" width="50%" height="50%">
 
 Produksie omgeving
 ---
