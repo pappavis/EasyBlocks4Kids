@@ -15,9 +15,9 @@ Dit is visueel programmering vir microcontrollers soos Arduino, Raspberry Pi en 
 
 Installasie vereistes
 ---
-**Kinders programmering**: GEEN vereistes. Website is 100% HTML/Javascript.
-**Ontwikkelaar**: Google Closure biblioteek en Python 2.7
-**Robot/sensore gebruiker**: NodeJS en johnny-five
+1. Kinders programmering: GEEN vereistes. Website is 100% HTML/Javascript.
+2. Ontwikkelaar: Google Closure biblioteek en Python 2.7
+3. Robot/sensore gebruiker: NodeJS en johnny-five
 
 
 Snelstart
