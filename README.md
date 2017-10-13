@@ -7,7 +7,7 @@ Licensing Information: **MIT License**
 Auteur en bydraes
 ---
 
-*Ontwikkelaar* Michiel Erasmus  thebapodcast@gmail.com
+***Ontwikkelaar*** Michiel Erasmus  thebapodcast@gmail.com  en  https://www.linkedin.com/in/michielerasmus/
 
 Wat is EasyBlocks4Kids
 ---
