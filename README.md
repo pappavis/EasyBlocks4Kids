@@ -1,5 +1,6 @@
 # EasyBlocks4Kids
 Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids
+<img src="https://i.imgur.com/MOH3DSb.png">
 
 Auteur en bydraes
 ---
@@ -59,6 +60,7 @@ MacBook$ cd ~/EasyLab4Kids/EasyBlocks4Kids
 ```
 MacBook$ python ./build.py
 ```
+<img src="https://i.imgur.com/MNYVrBk.png" width="75%" height="75%">
 
 Produksie omgeving
 ---
@@ -66,5 +68,5 @@ Live site kyk op http://erasmus-ict.nl/easylab4kids
 
 Vrae?
 ---
-Kontak Michiel Erasmus op theBApodcast@gmail.com
-Voorbeelde op https://www.facebook.com/EasyBlocks4Kids/
+* Kontak Michiel Erasmus op theBApodcast@gmail.com
+* Voorbeelde op https://www.facebook.com/EasyBlocks4Kids/
