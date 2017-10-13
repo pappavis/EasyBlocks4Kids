@@ -18,14 +18,23 @@ Installasie vereistes
 2. Ontwikkelaar: Google Closure biblioteek en Python 2.7
 3. Robot/sensore gebruiker: NodeJS en johnny-five
 
-
 Snelstart
 ---
-1. Download die frontend applikasie
+1. Maak lokaal 'n map aan byvb `MacBook$ mkdir ~/EasyLab4Kids
+2. Doen  `MacBook$ cd ~/EasyLab4Kids
+3. Download en installeer *Google Closure Library* 
+```
+git clone https://github.com/google/closure-library
+```
+
+4. Download die EasyBlocks4Kids web applikasie
 ```
 git clone http://github.com/pappavis/EasyBlocks4Kids
 ```
-2. Open bestand ./EasyBlocks4Kids/apps/easyblocks/index.html
-3. Kliek en sleep jouw programma aan elkaar.
-4. Kies *Uitvoeren* om die program na jou microcontroller te upload
+5. Open bestand ./EasyBlocks4Kids/apps/easyblocks/index.html
+6. Kliek en sleep jouw programma aan elkaar.
+7. Kies *Uitvoeren* om die program na jou microcontroller te upload
 
+Recompile
+---
+Om EasyBlocks4Kids te recompile doen die volgende;
