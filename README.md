@@ -1,13 +1,10 @@
 # EasyBlocks4Kids
 Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids <br/>
-<img src="https://i.imgur.com/MOH3DSb.png">
+<img src="https://i.imgur.com/MOH3DSb.png"><br/>
 
 
 Auteur en bydraes
 ---
-
-*Ontwikkelaar* Michiel Erasmus  thebapodcast@gmail.com
-=======
 ***Ontwikkelaar*** Michiel Erasmus  thebapodcast@gmail.com  en  https://www.linkedin.com/in/michielerasmus/
 
 Wat is EasyBlocks4Kids
@@ -27,11 +24,11 @@ Snelstart
 ```
 git clone http://github.com/pappavis/EasyBlocks4Kids
 ```
-**Stap 2:** Open bestand .\EasyBlocks4Kids\apps\easyblocks\index.html
-**Stap 3:** Kliek en sleep jouw programma aan elkaar.
-**Stap 3:** Kies *Uitvoeren* om die program na jou microcontroller te upload
-
-=======
+**Stap 2:** Open bestand .\EasyBlocks4Kids\apps\easyblocks\index.html<br/>
+**Stap 3:** Kliek en sleep jouw programma aan elkaar.<br/>
+**Stap 3:** Kies *Uitvoeren* om die program na jou microcontroller te upload<br/>
+<br/>
+=======<br/>
 <img src="https://i.imgur.com/zrBxmlm.png" width="50%" hight="50%"><br/>
 
 Hoe werk dit?
