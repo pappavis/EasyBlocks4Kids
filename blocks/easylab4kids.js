@@ -2620,7 +2620,7 @@ Blockly.Blocks['declare_photoresistor'] = {
         var veranderlike1 = Math.floor((Math.random() * 100) + 1);
         var globalVar1 = "var photoresistor2" + veranderlike1 + ";\n";
 
-        this.setColour(113);
+        this.setColour(119);
         this.appendDummyInput()
             .appendField("Photoresistor")
             .appendField(new Blockly.FieldImage("http://www.resistorguide.com/pictures/photoresistor.png", 32, 32))
@@ -2656,9 +2656,9 @@ Blockly.Blocks['event_photoresistor'] = {
         var veranderlike1 = ""; //Math.floor((Math.random() * 100) + 1);
         var globalVar1 = "var photoresistorSensor" + veranderlike1 + ";\n";
 
-        this.setColour(113);
+        this.setColour(119);
         this.appendStatementInput('EVENT_PHOTORESISTOR_DO')
-            .appendField(new Blockly.FieldImage("https://cdn.sparkfun.com/images/products/1/1/8/2/4/11824-02.jpg", 32, 32))
+            .appendField(new Blockly.FieldImage("http://www.resistorguide.com/pictures/photoresistor.png", 32, 32))
             .appendField("Welke fotoweerstand: ")
             .appendField(new Blockly.FieldDropdown([
                 ["Photoresistor1", "Photoresistor_1"],
