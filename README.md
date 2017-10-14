@@ -28,8 +28,8 @@ git clone http://github.com/pappavis/EasyBlocks4Kids
 **Stap 3:** Kliek en sleep jouw programma aan elkaar.<br/>
 **Stap 3:** Kies *Uitvoeren* om die program na jou microcontroller te upload<br/>
 <br/>
-=======<br/>
-<img src="https://i.imgur.com/zrBxmlm.png" width="50%" hight="50%"><br/>
+Voorbeeld EasyBlocks applikasie;<br/>
+<img src="https://i.imgur.com/zrBxmlm.png" width="40%" hight="40%"><br/>
 
 Hoe werk dit?
 ---
