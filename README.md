@@ -110,3 +110,9 @@ Vrae?
 ---
 * Kontak Michiel Erasmus op theBApodcast@gmail.com
 * Voorbeelde op https://www.facebook.com/EasyBlocks4Kids/ <br/>
+
+<br/>
+Vryheid + voorspoed + taal = Zuid-Afrikaanse Republiek Kaapland op http://afrikanersociety.org<br/>
+<br/>
+<br/>
+#easylab4kids #arduinorobot #erasmus-ict #easyblocks4kids
