@@ -16,9 +16,9 @@ Dit is visueel programmering vir microcontrollers soos Arduino, Raspberry Pi en 
 
 Installasie vereistes
 ---
-**Kinders programmering**: GEEN vereistes. Website is 100% HTML/Javascript.
-**Ontwikkelaar**: Google Closure biblioteek en Python 2.7
-**Robot/sensore gebruiker**: NodeJS en johnny-five
+**Kinders programmering**: GEEN vereistes. Website is 100% HTML/Javascript.<br/>
+**Ontwikkelaar**: Google Closure biblioteek en Python 2.7<br/>
+**Robot/sensore gebruiker**: NodeJS en johnny-five <br/>
 
 
 Snelstart
@@ -32,16 +32,16 @@ git clone http://github.com/pappavis/EasyBlocks4Kids
 **Stap 3:** Kies *Uitvoeren* om die program na jou microcontroller te upload
 
 =======
-<img src="https://i.imgur.com/zrBxmlm.png" width="50%" hight="50%">
+<img src="https://i.imgur.com/zrBxmlm.png" width="50%" hight="50%"><br/>
 
 Hoe werk dit?
 ---
-Jy laai die webpagina op http://erasmus-ict.nl/easylab4kids en sleep dan jou program aanmekaar.
-Vervolgens upload jy die program na jou Arduino of ander beheerder en waardeer die eindresultaat.
-
-Met één muiskliek jouw code of op BBC Microbit, of op een EasyLab arduino draai. So *maklik*!! :)
+Jy laai die webpagina op http://erasmus-ict.nl/easylab4kids en sleep dan jou program aanmekaar.<br/>
+Vervolgens upload jy die program na jou Arduino of ander beheerder en waardeer die eindresultaat.<br/>
+<br/>
+Met één muiskliek jouw code of op BBC Microbit, of op een EasyLab arduino draai. So *maklik*!! :)<br/>
 Jy hoeft werklikwaar géén kode te herskryf. Eenmaal jou program met blokke gebou en hy is klaar vir elke ander gesupport platform. <br/>
-Die backend code is *Javascript* dus elke Jan en sy maat kan dit lees en debug.
+Die backend code is *Javascript* dus elke Jan en sy maat kan dit lees en debug.<br/>
 
 EasyBlocks4Kids support
 ---
@@ -53,9 +53,9 @@ EasyBlocks4Kids support
 
 Installasie vereistes
 ---
-1. Kinders programmering: GEEN vereistes. Website is 100% HTML/Javascript.
-2. Ontwikkelaar: Google Closure biblioteek en Python 2.7
-3. Robot/sensore gebruiker: NodeJS en johnny-five
+1. Kinders programmering: GEEN vereistes. Website is 100% HTML/Javascript.<br/>
+2. Ontwikkelaar: Google Closure biblioteek en Python 2.7<br/>
+3. Robot/sensore gebruiker: NodeJS en johnny-five<br/>
 
 Snelstart
 ---
