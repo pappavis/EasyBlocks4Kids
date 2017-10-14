@@ -114,5 +114,4 @@ Vrae?
 <br/>
 Vryheid + voorspoed + taal = Zuid-Afrikaanse Republiek Kaapland op http://afrikanersociety.org<br/>
 <br/>
-<br/>
-#easylab4kids #arduinorobot #erasmus-ict #easyblocks4kids
+#easylab4kids #arduinorobot #erasmus-ict #easyblocks4kids<br/>
