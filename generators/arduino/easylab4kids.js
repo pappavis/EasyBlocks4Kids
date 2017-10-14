@@ -2064,4 +2064,56 @@ Blockly.Arduino.event_barometer = function() {
         console.log("FOUT event_barometer:\n" + error4);
     }
     return code + '\n';
+}; // eind event_barometer
+
+// photoresistor toegevoegd 13-10-2017
+Blockly.Arduino.declare_photoresistor = function() {
+    // If/elseif/else condition.
+    var n = 0;
+    var code = "";
+    try {
+        var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
+        var sensor_naam1 = "";
+        var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'DECLARE_PHOTORESISTOR_IO_POORT', Blockly.Arduino.ORDER_ATOMIC) || "\"A3\"";
+        var apparaat_type1 = this.getFieldValue('DECLARE_PHOTORESISTOR_SENSOR') || null;
+        var sensor_naam1 = this.getFieldValue('DECLARE_PHOTORESISTOR_NAAM1') + veranderlike1;
+        var apparaat_freq1 = Blockly.Arduino.valueToCode(this, 'DECLARE_PHOTORESISTOR_FREQ', Blockly.Arduino.ORDER_ATOMIC) || 250;
+        var globalVar1 = "var " + sensor_naam1 + ";\n";
+
+        Blockly.Arduino.definitions_["DECLARE_PHOTORESISTOR_" + sensor_naam1] = globalVar1;
+        Blockly.Arduino.setups_['DECLARE_PHOTORESISTOR_setup_' + sensor_naam1] = "  " + sensor_naam1 + " = new five.Sensor({pin: " + apparaat_poortNr1 + ", freq: " + apparaat_freq1 + "});";
+
+        // Blockly.Variables.predefinedVars = [];
+        Blockly.Variables.predefinedVars.push(sensor_naam1);
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_waarde");
+
+        var code = "";
+
+        // console.log(" declare_barometer code:\n" + code);
+    } catch (error4) {
+        console.log("FOUT declare_photoresistor:\n" + error4);
+    }
+    return code + '\n';
+};
+
+Blockly.Arduino.event_photoresistor = function() {
+    var n = 0;
+    var code = "";
+    try {
+        var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
+        var apparaat_state1 = this.getFieldValue('EVENT_PHOTORESISTOR_STAAT');
+        var sensor_naam1 = this.getFieldValue('EVENT_PHOTORESISTOR_NAAM1') + veranderlike1;
+        var globalVar1 = "var " + sensor_naam1 + ";\n";
+
+        var branch = Blockly.Arduino.statementToCode(this, 'EVENT_PHOTORESISTOR_DO');
+        code = sensor_naam1 + ".on(\"" + apparaat_state1 + "\", function() {\n";
+        code += "        " + sensor_naam1 + "_waarde = " + sensor_naam1 + ".value;\n"
+        code += "        " + branch + "\n";
+        code += "});\n";
+
+        // console.log(" event_photoresistor code:\n" + code);
+    } catch (error4) {
+        console.log("FOUT event_photoresistor:\n" + error4);
+    }
+    return code + '\n';
 }; // eind event_hygrometer

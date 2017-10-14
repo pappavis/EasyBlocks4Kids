@@ -67,6 +67,9 @@ CHANGELOG EasyLab4kids  zie http://erasmus-ict.nl, contact MICHIEL ERASMUS tel: 
  1.0 2017.10.11
  Eerste release volledig release.
 
+ 1.01 2017.10.13
+ - toevoeging: Photoresitor support.
+
 
 =====================
 KNOWN BUGS/ISSUES;

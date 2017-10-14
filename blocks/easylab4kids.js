@@ -2579,10 +2579,6 @@ Blockly.Blocks['declare_barometer'] = {
 };
 
 Blockly.Blocks['event_barometer'] = {
-    /**
-     * Block for if/elseif/else condition.
-     * @this Blockly.Block
-     */
     init: function() {
         var veranderlike1 = ""; //Math.floor((Math.random() * 100) + 1);
         var globalVar1 = "var hygroSensor" + veranderlike1 + ";\n";
@@ -2615,4 +2611,77 @@ Blockly.Blocks['event_barometer'] = {
         this.elseifCount_ = 0;
         this.elseCount_ = 0;
     }
-}; // einde event_proximity_sensor_data
+}; // einde event_barometer
+
+
+Blockly.Blocks['declare_photoresistor'] = {
+    helpUrl: 'http://arduino.cc/en/Reference/delay',
+    init: function() {
+        var veranderlike1 = Math.floor((Math.random() * 100) + 1);
+        var globalVar1 = "var photoresistor2" + veranderlike1 + ";\n";
+
+        this.setColour(113);
+        this.appendDummyInput()
+            .appendField("Photoresistor")
+            .appendField(new Blockly.FieldImage("http://www.resistorguide.com/pictures/photoresistor.png", 32, 32))
+            .appendField(" sensornaam: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["Photoresistor1", "Photoresistor_1"],
+                ["Photoresistor2", "Photoresistor_2"],
+                ["Photoresistor3", "Photoresistor_3"],
+                ["Photoresistor4", "Photoresistor_4"]
+            ]), "DECLARE_PHOTORESISTOR_NAAM1");
+
+        this.appendValueInput("DECLARE_PHOTORESISTOR_FREQ", "Number")
+            .appendField("data freq (ms) [0-10000]")
+            .setCheck("Number");
+
+        this.appendValueInput("DECLARE_PHOTORESISTOR_IO_POORT", "String")
+            .appendField("IO Poort aansluiting");
+
+
+        this.appendDummyInput()
+            .appendField(" ");
+
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip("default EasyLab4Kids A3");
+    }
+};
+
+
+Blockly.Blocks['event_photoresistor'] = {
+    init: function() {
+        var veranderlike1 = ""; //Math.floor((Math.random() * 100) + 1);
+        var globalVar1 = "var photoresistorSensor" + veranderlike1 + ";\n";
+
+        this.setColour(113);
+        this.appendStatementInput('EVENT_PHOTORESISTOR_DO')
+            .appendField(new Blockly.FieldImage("https://cdn.sparkfun.com/images/products/1/1/8/2/4/11824-02.jpg", 32, 32))
+            .appendField("Welke fotoweerstand: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["Photoresistor1", "Photoresistor_1"],
+                ["Photoresistor2", "Photoresistor_2"],
+                ["Photoresistor3", "Photoresistor_3"],
+                ["Photoresistor4", "Photoresistor_4"]
+            ]), "EVENT_PHOTORESISTOR_NAAM1")
+            .setAlign(Blockly.ALIGN_RIGHT);
+
+
+        this.appendDummyInput()
+            .appendField(" Wanneer ")
+            .appendField(new Blockly.FieldDropdown([
+                ["Data freq uitgelezen", "data"],
+                ["Lichtmeting wijziging vastgesteld", "change"]
+            ]), "EVENT_PHOTORESISTOR_STAAT")
+            .setAlign(Blockly.ALIGN_RIGHT);
+
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+
+        this.elseifCount_ = 0;
+        this.elseCount_ = 0;
+    }
+}; // einde event_photoresistor
