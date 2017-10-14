@@ -18,7 +18,7 @@ Installasie vereistes
 **Robot/sensore gebruiker**: NodeJS en johnny-five <br/>
 
 
-Snelstart
+Installasie stappenplan
 ---
 **Stap 1:** Download die frontend applikasie
 ```
@@ -31,7 +31,22 @@ git clone http://github.com/pappavis/EasyBlocks4Kids
 Voorbeeld EasyBlocks applikasie;<br/>
 <img src="https://i.imgur.com/zrBxmlm.png" width="80%" hight="80%"><br/>
 
-Hoe werk dit?
+Ek wil..
+---
+[1. Kyk wat ek hiermee kan] <br/>
+Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
+<br/>
+[2. Domotica potplante water gee]
+Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
+Bou jou applikasie met EasyBlocks na wense -- gebruik servo's ;) <br/>
+Sorg dat NodeJS en johnny-five geïstalleerd is <br/>
+Loop die adie EasyServer, of laat die kode uitvoer met node. <br/>
+ <br/>
+[2. Arduino robotmotor] <br/>
+Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
+Bou jou applikasie met EasyBlocks na wense -- gebruik motorjes's ;) <br/>
+
+Hoe werk EasyBlocks4Kids?
 ---
 Jy laai die webpagina op http://erasmus-ict.nl/easylab4kids en sleep dan jou program aanmekaar.<br/>
 Vervolgens upload jy die program na jou Arduino of ander beheerder en waardeer die eindresultaat.<br/>
