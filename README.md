@@ -101,6 +101,12 @@ Produksie omgeving
 ---
 Live site kyk op http://erasmus-ict.nl/easylab4kids
 
+Online lesse
+---
+Besoek my youtube kanaal om lesse te volg.<br/>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GjrgqvBUXg0/0.jpg)](https://www.youtube.com/watch?v=GjrgqvBUXg0)<br/>
+
+
 Vrae?
 ---
 * Kontak Michiel Erasmus op theBApodcast@gmail.com
