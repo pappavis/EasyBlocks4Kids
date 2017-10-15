@@ -138,6 +138,7 @@ Blockly.Blocks['windows_compoort'] = {
                 ["MacOS /dev/USBserial1420", "/dev/cu.wchusbserial1420"],
                 ["MacOS /dev/USBserial1421", "/dev/cu.wchusbserial1421"],
                 ["MacOS /dev/USBserial1422", "/dev/cu.wchusbserial1422"],
+                ["MacOS /dev/HC-06-DevB bluetooth", "/dev/cu.HC-06-DevB"],
                 ["Linux /dev/ttyUSB0", "/dev/ttyUSB0"],
                 ["Linux /dev/ttyUSB1", "/dev/ttyUSB1"],
                 ["Linux /dev/ttyUSB2", "/dev/ttyUSB2"]
