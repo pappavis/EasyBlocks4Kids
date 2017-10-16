@@ -51,6 +51,13 @@ Blockly.Arduino.declare_matrix_led = function() {
 
         Blockly.Arduino.setups_['declare_setup_LEDMATRIX_' + sensor_naam1] = "  " + sensor_naam1 + " = new five.Led.Matrix({controller: " + json_controller + ",  pins: {" + json_pins + "}, devices: 1 });";
 
+        Blockly.Variables.predefinedVars.push(sensor_naam1);
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_json");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_waarde");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_kol");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_ry");
+
         var code = "";
 
         // console.log(" declare_matrix_led code:\n" + code);
@@ -88,13 +95,6 @@ Blockly.Arduino.cmd_matrix_led = function() {
         Blockly.Arduino.definitions_["CMD_LEDMAXTRIX_kol" + veranderlike1] = "var " + sensor_naam1 + "_kol;\n";
         Blockly.Arduino.definitions_["CMD_LEDMAXTRIX_ry" + veranderlike1] = "var " + sensor_naam1 + "_ry;\n";
         // Blockly.Arduino.setups_['I2C_LCD1_scale' + veranderlike1] = sensor_naam1 + ".scaleTo(0, " + sensor_freq1 + ");";
-
-        Blockly.Variables.predefinedVars.push(sensor_naam1);
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_json");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_waarde");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_kol");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_ry");
 
         var argument = "";
         var branch = "";
@@ -343,12 +343,6 @@ Blockly.Arduino.cmd_I2C_LCD = function() {
         Blockly.Arduino.definitions_["CMD_I2C_LCD1_kol" + veranderlike1] = "var " + sensor_naam1 + "_kol = " + i2c_kol1 + ";\n";
         Blockly.Arduino.definitions_["CMD_I2C_LCD1_ry" + veranderlike1] = "var " + sensor_naam1 + "_ry = " + i2c_ry1 + ";\n";
         // Blockly.Arduino.setups_['I2C_LCD1_scale' + veranderlike1] = sensor_naam1 + ".scaleTo(0, " + sensor_freq1 + ");";
-
-        Blockly.Variables.predefinedVars.push(sensor_naam1);
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_teks");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_kol");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_ry");
 
         var argument = "";
         var branch = "";
