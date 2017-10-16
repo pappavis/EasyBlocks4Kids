@@ -20,7 +20,7 @@ Kom ons neem 'n voorbeeld
 ---
 Stel jy wil.. 'n boefalarm maak, wat ook nog 'n hond uit sy hok loslaat. Dan bou jy die app en wag op 'n sein, wanneer die boef errens langs loop waar hy nie mag, dan voer jy die boeg aan jou troue kameraad Boelie.
 
-<img src="https://i.imgur.com/0XcwCbd.png" width="50%" height="50%" alt="EasyBlocks4Kids alarm met servo"><br/>
+<img src="https://i.imgur.com/0XcwCbd.png" width="90%" height="90%" alt="EasyBlocks4Kids alarm met servo"><br/>
 <br/>
 
 Auteur en bydraes
