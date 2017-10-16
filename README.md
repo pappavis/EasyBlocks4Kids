@@ -8,7 +8,16 @@ Wat nog meer?<br/>
 - Een robot bou wat slim op planeet Mars gaan rondry.
 <br/>
 <img src="https://i.imgur.com/MOH3DSb.png"><br/>
+<br/>
+Hoe dan?<br/>
+Deur 'n computer program te skryf. Geen ervaring vereist. Jy gebruik "bakstene" om 'n program te bou.<br/>
+Wat as jy nie kan programmeer? Dan volg jy lekker gemaklik die online youtube lesse.<br/>
+<br/>
+Kom ons neem 'n voorbdeeld<br/>
+Stel jy wil.. 'n boefalarm maak, wat ook nog 'n hond uit sy hok loslaat. Dan bou jy die app en wag op 'n sein, wanneer die boef errens langs loop waar hy nie mag, dan voer jy die boeg aan jou troue kameraad Boelie.
 
+<img src="https://i.imgur.com/0XcwCbd.png" width="50%" height="50%" alt="EasyBlocks4Kids alarm met servo"><br/>
+<br/>
 
 Auteur en bydraes
 ---
