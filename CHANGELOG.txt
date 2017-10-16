@@ -73,6 +73,7 @@ CHANGELOG EasyLab4kids  zie http://erasmus-ict.nl, contact MICHIEL ERASMUS tel: 
  1.02 2017.10.16
  - toegevoegd: Bluetooth serialpoort vir MacOS en Linux.
  - BUGFIX: spelfoute mbt MacOS serialpoort.
+ - BUGFIX: EasyLab V2 IO-poorten is anders dan EasLab V1. Eindgebruiker: update jouw block frontend code!
 
 =====================
 KNOWN BUGS/ISSUES;

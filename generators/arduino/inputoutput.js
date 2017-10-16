@@ -181,6 +181,20 @@ Blockly.Arduino.IO_poorten_easylab_nano_lijst = function() {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.IO_poorten_easylab_nano_v2_lijst = function() {
+    // datum en tyd
+    var veranderlike1 = Math.floor((Math.random() * 5) + 1);
+    var code = "";
+    var ander1 = "";
+
+    try {
+        code = this.getFieldValue('IO_POORTEN_EASYLAB_NANO_V2');
+    } catch (error4) {
+        console.log("FOUT IO_POORTEN_EASYLAB_NANO_V2:\n" + error4);
+    }
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.IO_poorten_bbc_microbit_lijst = function() {
     // datum en tyd
     var veranderlike1 = Math.floor((Math.random() * 5) + 1);

@@ -228,6 +228,7 @@ Blockly.Blocks['IO_poorten'] = {
     }
 };
 
+
 Blockly.Blocks['IO_poorten_GPIO_lijst'] = {
     helpUrl: 'http://arduino.cc/en/Reference/Constants',
     init: function() {
@@ -268,8 +269,9 @@ Blockly.Blocks['IO_poorten_easylab_nano_lijst'] = {
     init: function() {
         this.setColour(195);
         this.appendDummyInput()
-            .appendField("Digitaal/analoog pinnetje")
+            .appendField("EasyLab Digitaal/analoog pinnetje")
             .appendField(new Blockly.FieldDropdown([
+                ["**geen io-poort geselecteerd", ""],
                 ["EasyLab Arduino LED 13 | Grove", "13"],
                 ["EasyLab LED Blou", "\"A0\""],
                 ["EasyLab LED Groen", "\"A1\""],
@@ -277,14 +279,48 @@ Blockly.Blocks['IO_poorten_easylab_nano_lijst'] = {
                 ["EasyLab knijper A3      ", "\"A3\""],
                 ["EasyLab knijper A6      ", "\"A6\""],
                 ["EasyLab knijper A7      ", "\"A7\""],
-                ["EasyLab knijper D0 (TX) ", "0"],
-                ["EasyLab knijper D1 (RX) ", "1"],
+                ["EasyLab headerpin D0 (TX)", "0"],
+                ["EasyLab headerpin D1 (RX)", "1"],
                 ["EasyLab knijper D8      ", "8"],
                 ["EasyLab knopje", "2"],
-                ["EasyLab Lijn sensor Links", "4"],
-                ["EasyLab Lijn sensor Rechts", "7"],
-                ["EasyLab Servo | Arduino PWM", "10"]
+                ["EasyLab Lijn sensor Links", "\"A1\""],
+                ["EasyLab Lijn sensor Rechts", "8"],
+                ["EasyLab Servo | Arduino PWM", "10"],
+                ["EasyLab Servo | TX Wifi", "11"],
+                ["EasyLab Servo | RX Wifi", "12"]
             ]), 'IO_POORTEN_EASYLAB_NANO1');
+        this.setOutput(true, 'String');
+        this.setTooltip('Welke IO poort');
+    }
+};
+
+Blockly.Blocks['IO_poorten_easylab_nano_v2_lijst'] = {
+    helpUrl: 'http://arduino.cc/en/Reference/Constants',
+    init: function() {
+        this.setColour(195);
+        this.appendDummyInput()
+            .appendField("EasyLab V2 Digitaal/analoog pinnetje")
+            .appendField(new Blockly.FieldDropdown([
+                ["**geen io-poort geselecteerd", ""],
+                ["EasyLab Arduino LED 13 | Grove", "13"],
+                ["EasyLab LED Blou", "4"],
+                ["EasyLab LED Groen", "7"],
+                ["EasyLab LED Rooi", "\"A0\""],
+                ["EasyLab knijper A2        ", "\"A2\""],
+                ["EasyLab knijper A3        ", "\"A3\""],
+                ["EasyLab knijper A4 i2c SDA", "\"A4\""],
+                ["EasyLab knijper A5 i2c SCL", "\"A5\""],
+                ["EasyLab knijper A6        ", "\"A6\""],
+                ["EasyLab knijper A7        ", "\"A7\""],
+                ["EasyLab headerpin D0 (TX) ", "0"],
+                ["EasyLab headerpin D1 (RX) ", "1"],
+                ["EasyLab knopje", "2"],
+                ["EasyLab Lijn sensor Links", "\"A0\""],
+                ["EasyLab Lijn sensor Rechts", "7"],
+                ["EasyLab Servo | Arduino PWM", "10"],
+                ["EasyLab Servo | TX Wifi", "11"],
+                ["EasyLab Servo | RX Wifi", "12"]
+            ]), 'IO_POORTEN_EASYLAB_NANO_V2');
         this.setOutput(true, 'String');
         this.setTooltip('Welke IO poort');
     }
