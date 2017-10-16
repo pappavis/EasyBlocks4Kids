@@ -263,7 +263,6 @@ Blockly.Blocks['IO_poorten_GPIO_lijst'] = {
     }
 };
 
-
 Blockly.Blocks['IO_poorten_easylab_nano_lijst'] = {
     helpUrl: 'http://arduino.cc/en/Reference/Constants',
     init: function() {
@@ -315,11 +314,11 @@ Blockly.Blocks['IO_poorten_easylab_nano_v2_lijst'] = {
                 ["EasyLab headerpin D0 (TX) ", "0"],
                 ["EasyLab headerpin D1 (RX) ", "1"],
                 ["EasyLab knopje", "2"],
-                ["EasyLab Lijn sensor Links", "\"A0\""],
-                ["EasyLab Lijn sensor Rechts", "7"],
+                ["EasyLab Lijn sensor Links  A0", "\"A0\""],
+                ["EasyLab Lijn sensor Rechts D7", "7"],
                 ["EasyLab Servo | Arduino PWM", "10"],
-                ["EasyLab Servo | TX Wifi", "11"],
-                ["EasyLab Servo | RX Wifi", "12"]
+                ["EasyLab TX Wifi            D11", "11"],
+                ["EasyLab RX Wifi            D12", "12"]
             ]), 'IO_POORTEN_EASYLAB_NANO_V2');
         this.setOutput(true, 'String');
         this.setTooltip('Welke IO poort');
