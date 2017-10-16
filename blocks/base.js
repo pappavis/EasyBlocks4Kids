@@ -135,13 +135,14 @@ Blockly.Blocks['windows_compoort'] = {
                 ["Windows COM7", "COM7"],
                 ["Windows COM8", "COM8"],
                 ["Windows COM9", "COM9"],
-                ["MacOS /dev/USBserial1420", "/dev/cu.wchusbserial1420"],
-                ["MacOS /dev/USBserial1421", "/dev/cu.wchusbserial1421"],
-                ["MacOS /dev/USBserial1422", "/dev/cu.wchusbserial1422"],
-                ["MacOS /dev/HC-06-DevB bluetooth", "/dev/cu.HC-06-DevB"],
+                ["MacOS /dev/cu.wchusbserial1420    ", "/dev/cu.wchusbserial1420"],
+                ["MacOS /dev/cu.wchusbserial1421    ", "/dev/cu.wchusbserial1421"],
+                ["MacOS /dev/cu.wchusbserial1422    ", "/dev/cu.wchusbserial1422"],
+                ["MacOS /dev/cu.HC-06-DevB bluetooth", "/dev/cu.HC-06-DevB"],
                 ["Linux /dev/ttyUSB0", "/dev/ttyUSB0"],
                 ["Linux /dev/ttyUSB1", "/dev/ttyUSB1"],
-                ["Linux /dev/ttyUSB2", "/dev/ttyUSB2"]
+                ["Linux /dev/ttyUSB2", "/dev/ttyUSB2"],
+                ["Linux /dev/tty.HC-06-DevB bluetooth", "/dev/tty.HC-06-DevB"]
             ]), 'COM_POORT')
         this.setOutput(true, 'String');
         this.setTooltip('COM poort in Windows');
