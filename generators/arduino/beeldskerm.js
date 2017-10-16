@@ -49,7 +49,7 @@ Blockly.Arduino.declare_matrix_led = function() {
         var json_controller = apparaat_type1 == "MAX7219" ? "null" : "\"" + apparaat_type1 + "\"";
         var json_pins = "data: " + apparaat_poortNr1_data + " , clock: " + apparaat_poortNr1_clock + ", cs: " + apparaat_poortNr1_cs;
 
-        Blockly.Arduino.setups_['declare_setup_LEDMATRIX_' + sensor_naam1] = "  " + sensor_naam1 + " = new five.Led.Matrix({controller: " + json_controller + ",  pins: {" + json_pins + "}, devices: 1 });";
+        Blockly.Arduino.setups_['declare_setup_LEDMATRIX_' + sensor_naam1] = "  " + sensor_naam1 + " = new five.Led.Matrix({ pins: {" + json_pins + "}, devices: 1 });";
 
         Blockly.Variables.predefinedVars.push(sensor_naam1);
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_json");
@@ -105,7 +105,7 @@ Blockly.Arduino.cmd_matrix_led = function() {
 
         switch (switch_state1) {
             case "CHARS":
-                actie1 += "    var tekst172 = '" + ledmatrix_text1 + "';\n";
+                actie1 += "    var tekst172 = " + ledmatrix_text1 + ";\n";
                 actie1 += "       var geskeidArr1 = tekst172.split('');\n";
                 actie1 += "       var shapes87 = Object.keys(five.Led.Matrix.CHARS);\n";
                 actie1 += "       for (var teller87 = 0; teller87 < geskeidArr1.lenth; teller87++) {\n";
