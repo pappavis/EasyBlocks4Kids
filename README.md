@@ -36,13 +36,13 @@ Ek wil..
 [1. Kyk wat ek hiermee kan] <br/>
 Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
 <br/>
-[2. Domotica potplante water gee]
+[2. Domotica potplante water gee] <br/>
 Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
 Bou jou applikasie met EasyBlocks na wense -- gebruik servo's ;) <br/>
 Sorg dat NodeJS en johnny-five geïstalleerd is <br/>
 Loop die adie EasyServer, of laat die kode uitvoer met node. <br/>
  <br/>
-[2. Arduino robotmotor] <br/>
+[3. Arduino robotmotor] <br/>
 Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
 Bou jou applikasie met EasyBlocks na wense -- gebruik motorjes's ;) <br/>
 
