@@ -5,7 +5,9 @@ Wat nog meer?<br/>
 - Het jy 'n kat? Dan kan jy sy ete laat doseer.<br/>
 - 'n Diefalarm wat berigte stuur wanneer 'n boosdoener in jou huis kom.<br/>
 - Jou waterkultuur die grondwater monitor.<br/>
-- Een robot bou wat slim op planeet Mars gaan rondry.
+- Een robot bou wat slim op planeet Mars gaan rondry.<br/>
+- Visueel programmering vir microcontrollers soos Arduino, Raspberry Pi en BBC Microbit.<br/>
+- Support vir tientalle sensore en skerms.<br/>
 <br/>
 <img src="https://i.imgur.com/MOH3DSb.png"><br/>
 <br/>
@@ -13,7 +15,9 @@ Hoe dan?<br/>
 Deur 'n computer program te skryf. Geen ervaring vereist. Jy gebruik "bakstene" om 'n program te bou.<br/>
 Wat as jy nie kan programmeer? Dan volg jy lekker gemaklik die online youtube lesse.<br/>
 <br/>
-Kom ons neem 'n voorbdeeld<br/>
+
+Kom ons neem 'n voorbeeld
+---
 Stel jy wil.. 'n boefalarm maak, wat ook nog 'n hond uit sy hok loslaat. Dan bou jy die app en wag op 'n sein, wanneer die boef errens langs loop waar hy nie mag, dan voer jy die boeg aan jou troue kameraad Boelie.
 
 <img src="https://i.imgur.com/0XcwCbd.png" width="50%" height="50%" alt="EasyBlocks4Kids alarm met servo"><br/>
@@ -22,10 +26,6 @@ Stel jy wil.. 'n boefalarm maak, wat ook nog 'n hond uit sy hok loslaat. Dan bou
 Auteur en bydraes
 ---
 ***Ontwikkelaar*** Michiel Erasmus  thebapodcast@gmail.com  en  https://www.linkedin.com/in/michielerasmus/
-
-Wat is EasyBlocks4Kids
----
-Dit is visueel programmering vir microcontrollers soos Arduino, Raspberry Pi en BBC Microbit. Met support vir tientalle sensore en skerms.
 
 Installasie vereistes
 ---
@@ -47,9 +47,9 @@ git clone http://github.com/pappavis/EasyBlocks4Kids
 Voorbeeld EasyBlocks applikasie;<br/>
 <img src="https://i.imgur.com/zrBxmlm.png" width="80%" hight="80%"><br/>
 
-Ek wil..
+Welke soort gebruikr is jy?
 ---
-[1. Kyk wat ek hiermee kan] <br/>
+[1. Ek wil kyk wat ek hiermee kan] <br/>
 Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
 <br/>
 [2. Domotica potplante water gee] <br/>
