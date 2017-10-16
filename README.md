@@ -1,5 +1,12 @@
 # EasyBlocks4Kids
 Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids <br/>
+<br/>
+Wat nog meer?<br/>
+- Het jy 'n kat? Dan kan jy sy ete laat doseer.<br/>
+- 'n Diefalarm wat berigte stuur wanneer 'n boosdoener in jou huis kom.<br/>
+- Jou waterkultuur die grondwater monitor.<br/>
+- Een robot bou wat slim op planeet Mars gaan rondry.
+<br/>
 <img src="https://i.imgur.com/MOH3DSb.png"><br/>
 
 
