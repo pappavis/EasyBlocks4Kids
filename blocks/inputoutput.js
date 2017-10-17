@@ -263,14 +263,14 @@ Blockly.Blocks['IO_poorten_GPIO_lijst'] = {
     }
 };
 
+
 Blockly.Blocks['IO_poorten_easylab_nano_lijst'] = {
     helpUrl: 'http://arduino.cc/en/Reference/Constants',
     init: function() {
         this.setColour(195);
         this.appendDummyInput()
-            .appendField("EasyLab Digitaal/analoog pinnetje")
             .appendField(new Blockly.FieldDropdown([
-                ["**geen io-poort geselecteerd", ""],
+                ["EasyLab **selecteer een IO-poort", ""],
                 ["EasyLab Arduino LED 13 | Grove", "13"],
                 ["EasyLab LED Blou", "\"A0\""],
                 ["EasyLab LED Groen", "\"A1\""],
@@ -283,7 +283,7 @@ Blockly.Blocks['IO_poorten_easylab_nano_lijst'] = {
                 ["EasyLab knijper D8      ", "8"],
                 ["EasyLab knopje", "2"],
                 ["EasyLab Lijn sensor Links", "\"A1\""],
-                ["EasyLab Lijn sensor Rechts", "8"],
+                ["EasyLab Lijn sensor Rechts", "4"],
                 ["EasyLab Servo | Arduino PWM", "10"],
                 ["EasyLab Servo | TX Wifi", "11"],
                 ["EasyLab Servo | RX Wifi", "12"]
@@ -298,24 +298,23 @@ Blockly.Blocks['IO_poorten_easylab_nano_v2_lijst'] = {
     init: function() {
         this.setColour(195);
         this.appendDummyInput()
-            .appendField("EasyLab V2 Digitaal/analoog pinnetje")
             .appendField(new Blockly.FieldDropdown([
-                ["**geen io-poort geselecteerd", ""],
-                ["EasyLab Arduino LED 13 | Grove", "13"],
-                ["EasyLab LED Blou", "4"],
-                ["EasyLab LED Groen", "7"],
-                ["EasyLab LED Rooi", "\"A0\""],
-                ["EasyLab knijper A2        ", "\"A2\""],
-                ["EasyLab knijper A3        ", "\"A3\""],
-                ["EasyLab knijper A4 i2c SDA", "\"A4\""],
-                ["EasyLab knijper A5 i2c SCL", "\"A5\""],
-                ["EasyLab knijper A6        ", "\"A6\""],
-                ["EasyLab knijper A7        ", "\"A7\""],
-                ["EasyLab headerpin D0 (TX) ", "0"],
-                ["EasyLab headerpin D1 (RX) ", "1"],
-                ["EasyLab knopje", "2"],
-                ["EasyLab Lijn sensor Links  A0", "\"A0\""],
-                ["EasyLab Lijn sensor Rechts D7", "7"],
+                ["EasyLab V2 **selecteer een IO-poort", ""],
+                ["EasyLab V2 Arduino LED 13 | Grove", "13"],
+                ["EasyLab V2 LED Blou", "4"],
+                ["EasyLab V2 LED Groen", "7"],
+                ["EasyLab V2 LED Rooi", "\"A0\""],
+                ["EasyLab V2 knijper A2        ", "\"A2\""],
+                ["EasyLab V2 knijper A3        ", "\"A3\""],
+                ["EasyLab V2 knijper A4 i2c SDA", "\"A4\""],
+                ["EasyLab V2 knijper A5 i2c SCL", "\"A5\""],
+                ["EasyLab V2 knijper A6        ", "\"A6\""],
+                ["EasyLab V2 knijper A7        ", "\"A7\""],
+                ["EasyLab V2 headerpin D0 (TX) ", "0"],
+                ["EasyLab V2 headerpin D1 (RX) ", "1"],
+                ["EasyLab V2 knopje", "2"],
+                ["EasyLab V2 Lijn sensor Links  A0", "\"A0\""],
+                ["EasyLab V2 Lijn sensor Rechts D7", "7"],
                 ["EasyLab Servo | Arduino PWM", "10"],
                 ["EasyLab TX Wifi            D11", "11"],
                 ["EasyLab RX Wifi            D12", "12"]
