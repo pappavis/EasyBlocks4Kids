@@ -2384,20 +2384,21 @@ Blockly.Blocks['cmd_piezo1_voorbeeldlied_lijst'] = {
         this.setColour(128);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
-                ["Voorbeeldlied Mary had a little lamb (lang)", "\"E D C D - - E E E D D D - E - G \""],
-                ["Voorbeeldlied Mary had a little lamb (kort)", "\"E D C D \""],
-                ["Voorbeeldlied Vader jacob (kort)", "\"F G A F \""],
-                ["Voorbeeldlied zomaar wat (kort)", "\"A B C D C - - A \""],
-                ["Voorbeeldlied biep hoge toon", "\"A \""],
-                ["Voorbeeldlied biep lage toon", "\"A \""],
+                ["Voorbeeldlied Mary had a little lamb (lang)", "\"E - D - C - D - - E E E D D D - E - G \""],
+                ["Voorbeeldlied Mary had a little lamb (kort)", "\"E - D - C - D \""],
+                ["Voorbeeldlied Vader jacob (kort)", "\"F - G - A - F \""],
+                ["Voorbeeldlied geluid A - B - C", "\"A - B - C - \""],
+                ["Voorbeeldlied geluid C - D - F", "\"C - D - F - \""],
+                ["Voorbeeldlied zomaar wat (kort)", "\"A - B - C - D - C - - A \""],
+                ["Voorbeeldlied biep hoge toon", "\"A - \""],
+                ["Voorbeeldlied biep lage toon", "\"F - \""],
                 ["Voorbeeldlied rookmelder", "\"F - F - F \""],
-                ["Voorbeeldlied takkeherrie!!", "\"AGCDFE\""]
+                ["Voorbeeldlied takkeherrie!!", "\"AGCDFE - FEDC - AG \""]
             ]), 'CMD_PIEZO_VOORBEELDLIED1_LIJST')
         this.setOutput(true, 'String');
         this.setTooltip('herriemaken wat moet hy doen');
     }
 };
-
 
 Blockly.Blocks['declare_hygrometer'] = {
     helpUrl: 'http://arduino.cc/en/Reference/delay',
