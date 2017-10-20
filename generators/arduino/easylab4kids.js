@@ -91,7 +91,7 @@ Blockly.Arduino.procedures_easylab4kids_boards = function() {
         board_comport1 = board_comport1 == null || board_comport1 == "" || board_comport1 == "\"\"" ? "" : board_comport1;
         var poortNr = "";
         if (board_type1 == "BOARD_TYPE_MICROBIT") {
-            poortNr = board_comport1 == "" ? "id: 1" : " adress: " + board_comport1 + ", id: 1 ";
+            // poortNr = board_comport1 == "" ? "id: 1" : " adress: " + board_comport1 + ", id: 1 ";
         } else {
             poortNr = board_comport1 == "" ? "" : "port: " + board_comport1 + " ";
         }
@@ -221,6 +221,11 @@ Blockly.Arduino.procedures_easylab4kids_boards = function() {
                 Blockly.Arduino.definitions_[board_DefNaam1 + veranderlike1] += "});\n\n";
                 break;
         }
+
+        Blockly.Arduino.definitions_[funcName + "_boardtype"] = "var " + funcName + "_boardtype = \"" + board_type1 + "\";";
+        Blockly.Arduino.definitions_[funcName + "_boardname"] = "var boardname = \"" + funcName + "\";";
+        Blockly.Variables.predefinedVars.push(funcName + "_boardtype");
+        Blockly.Variables.predefinedVars.push(funcName + "_boardname"); // potentieele bug.. :P
 
         var setups2 = [];
         if (board_events1 == "ready") {

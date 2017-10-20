@@ -566,9 +566,9 @@ Blockly.Blocks['event_button_Down_hold_up'] = {
         this.appendStatementInput('EVENT_BUTTON_ON_OFF_DO')
             .appendField("knop")
             .appendField(new Blockly.FieldDropdown([
-                ["Knop ingedrukt", "up"],
-                ["Knop ingehouden", "close"],
-                ["Knop losgelaat", "hold"]
+                ["Knop ingedrukt", "press"],
+                ["Knop ingehouden", "hold"],
+                ["Knop losgelaat", "release"]
             ]), "EVENT_BUTTON_DOWN_HOLD_UP_STATE");
 
         this.appendDummyInput()
@@ -2367,10 +2367,10 @@ Blockly.Blocks['cmd_piezo1_beat_lijst'] = {
         this.setColour(128);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
+                ["Beat 4 op 4", "4 / 4"],
                 ["Beat 1 op 4", "1 / 4"],
                 ["Beat 2 op 4", "2 / 4"],
                 ["Beat 3 op 4", "3 / 4"],
-                ["Beat 4 op 4", "4 / 4"]
             ]), 'CMD_PIEZO_BEAT1_LIJST')
         this.setOutput(true, 'String');
         this.setTooltip('Piezo beats wat moet hy doen');
@@ -2392,7 +2392,7 @@ Blockly.Blocks['cmd_piezo1_voorbeeldlied_lijst'] = {
                 ["Voorbeeldlied zomaar wat (kort)", "\"A - B - C - D - C - - A \""],
                 ["Voorbeeldlied biep hoge toon", "\"A - \""],
                 ["Voorbeeldlied biep lage toon", "\"F - \""],
-                ["Voorbeeldlied rookmelder", "\"F - F - F \""],
+                ["Voorbeeldlied rookmelder", "\"A A# A# A A# A# \""],
                 ["Voorbeeldlied takkeherrie!!", "\"AGCDFE - FEDC - AG \""]
             ]), 'CMD_PIEZO_VOORBEELDLIED1_LIJST')
         this.setOutput(true, 'String');

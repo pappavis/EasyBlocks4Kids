@@ -331,19 +331,26 @@ Blockly.Blocks['IO_poorten_bbc_microbit_lijst'] = {
         this.appendDummyInput()
             .appendField("BBC Microbit")
             .appendField(new Blockly.FieldDropdown([
-                ["0 Analoog P0", "\"A3\""],
-                ["1 Analoog P1", "\"A3\""],
-                ["2 Analoog P2", "\"A4\""],
-                ["3 Analoog P3", "\"A5\""],
+                ["0 Analoog P0  PWM", "\"A0\""],
+                ["1 Analoog P1  PWM", "\"A1\""],
+                ["2 Analoog P2  PWM", "\"A2\""],
+                ["3 Analoog P3  PWM", "\"A3\""],
+                ["4 Analoog P4     ", "\"A4\""],
+                ["5 Analoog P10 PWM", "\"A5\""],
                 ["Button A P05", "\"A\""],
                 ["Button B P11", "\"B\""],
-                ["P20 I2C-SDA ", "\"P20\""],
-                ["P21 I2C-SCL ", "\"P20\""],
-                ["P16         ", "\"P16\""],
-                ["P15 SPI-MOSI", "\"P15\""],
-                ["P14 SPI-MISO", "\"P14\""],
-                ["P13 SPI-SCK ", "\"P13\""],
-                ["P12         ", "\"P12\""],
+                ["P05         ", "5"],
+                ["P06         ", "6"],
+                ["P07         ", "7"],
+                ["P08         ", "8"],
+                ["P09         ", "9"],
+                ["P11         ", "11"],
+                ["P19 I2C-SDA ", "19"],
+                ["P20 I2C-SCL ", "20"],
+                ["P13 SPI-SCK ", "13"],
+                ["P14 SPI-MISO", "14"],
+                ["P15 SPI-MOSI", "15"],
+                ["P16         ", "16"]
             ]), 'IO_POORTEN_BBC_MICROBIT1');
         this.setOutput(true, 'String');
         this.setTooltip('Welke IO poort');

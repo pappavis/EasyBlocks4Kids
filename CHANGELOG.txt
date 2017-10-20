@@ -70,9 +70,9 @@ CHANGELOG EasyLab4kids  zie http://erasmus-ict.nl, contact MICHIEL ERASMUS tel: 
  1.01 2017.10.13
  - toevoeging: Photoresitor support.
 
- 1.02 2017.10.16
+ 1.03 2017.10.16
  - toegevoegd: Bluetooth serialpoort vir MacOS en Linux.
- - wijziging: Piezzo geluid om frontend na eie groep "geluid" verplaatsd.
+ - wijziging: Piezzo geluid om frontend na eie groep 'geluid' verplaatsd.
  - BUGFIX: spelfoute mbt MacOS serialpoort.
  - BUGFIX: EasyLab V2 IO-poorten is anders dan EasLab V1. Eindgebruiker: update jouw block frontend code!
 
