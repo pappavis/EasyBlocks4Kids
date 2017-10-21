@@ -102,15 +102,24 @@ Blockly.Blocks['declare_motorshield'] = {
             .appendField(" Soort motorshield: ")
             .appendField(new Blockly.FieldDropdown([
                 ["EasyLab4Kids Arduino ", "DEFAULT"],
+                ["Arduino DF Robot - MPR121", "DF_Robot"],
                 ["Arduino Dual H-Bridge", "H_BRIDGE"],
-                ["Arduino Motor Shield R3", "ARDUINO_MOTOR_SHIELD_R3_1"],
-                ["Arduino DF Robot - MPR121", "DF Robot"],
-                ["Arduino Rugged Circuits Rugged Motor Driver", "RUGGED_CIRCUITS"],
-                ["Arduino Sparkfun Ardumoto", "SPARKFUN_ARDUMOTO"],
-                ["Arduino Uno Adafruit Motor/Stepper/Servo Shield V1", "ADAFRUIT_V1"],
-                ["Arduino Uno Adafruit Motor/Stepper/Servo Shield V2", "ADAFRUIT_V2"],
+                ["Arduino Freetronics H-bridge", "FREETRONICS_HBRIDGE"],
+                ["Arduino Micro magician V2 Shield", "MICRO_MAGICIAN_V2"],
+                ["Arduino Motor PCA9685 via I2C", "PCA9685"],
+                ["Arduino Motor Shield R3.1", "ARDUINO_MOTOR_SHIELD_R3_1"],
+                ["Arduino Motor Shield R3.2", "ARDUINO_MOTOR_SHIELD_R3_2"],
+                ["Arduino Motor Shield R3.3", "ARDUINO_MOTOR_SHIELD_R3_3"],
+                ["Arduino NKC Electronics kit", "NKC_ELECTRONICS_KIT"],
                 ["Arduino Pololu DRV8835 Shield", "POLOLU_DRV8835_SHIELD"],
-                ["Motor PCA9685 via I2C", "PCA9685"]
+                ["Arduino Pololu DRV8835 Shield", "POLOLU_VNH5019_SHIELD"],
+                ["Arduino Rugged Circuits Rugged Motor Driver", "RUGGED_CIRCUITS"],
+                ["Arduino SeeedStudio H-bridge", "SEEED_STUDIO"],
+                ["Arduino Sparkfun Ardumoto", "SPARKFUN_ARDUMOTO"],
+                ["Arduino Sparkfun Dual H-bridge Edison", "SPARKFUN_DUAL_HBRIDGE_EDISON_BLOCK"],
+                ["Arduino Sparkfun Ludus", "SPARKFUN_LUDUS"],
+                ["Arduino Uno Adafruit Motor/Stepper/Servo Shield V1", "ADAFRUIT_V1"],
+                ["Arduino Uno Adafruit Motor/Stepper/Servo Shield V2", "ADAFRUIT_V2"]
             ]), "DECLARE_MOTORSHIELD1_CONTROLLER1");
         this.setInputsInline(true);
 
