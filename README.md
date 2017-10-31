@@ -47,7 +47,7 @@ git clone http://github.com/pappavis/EasyBlocks4Kids
 Voorbeeld EasyBlocks applikasie;<br/>
 <img src="https://i.imgur.com/zrBxmlm.png" width="80%" hight="80%"><br/>
 
-Welke soort gebruikr is jy?
+Welke soort gebruiker is jy?
 ---
 [1. Ek wil kyk wat ek hiermee kan] <br/>
 Download die applikasie en open .\EasyBlocks4Kids\apps\easyblocks\index.html <br/>
