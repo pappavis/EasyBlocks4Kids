@@ -135,6 +135,8 @@ Blockly.Blocks['windows_compoort'] = {
                 ["Windows COM7", "COM7"],
                 ["Windows COM8", "COM8"],
                 ["Windows COM9", "COM9"],
+                ["MacOS /dev/cu.wchusbserial1410    ", "/dev/cu.wchusbserial1410"],
+                ["MacOS /dev/cu.wchusbserial1411    ", "/dev/cu.wchusbserial1411"],
                 ["MacOS /dev/cu.wchusbserial1420    ", "/dev/cu.wchusbserial1420"],
                 ["MacOS /dev/cu.wchusbserial1421    ", "/dev/cu.wchusbserial1421"],
                 ["MacOS /dev/cu.wchusbserial1422    ", "/dev/cu.wchusbserial1422"],

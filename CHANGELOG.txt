@@ -76,6 +76,9 @@ CHANGELOG EasyLab4kids  zie http://erasmus-ict.nl, contact MICHIEL ERASMUS tel: 
  - BUGFIX: spelfoute mbt MacOS serialpoort.
  - BUGFIX: EasyLab V2 IO-poorten is anders dan EasLab V1. Eindgebruiker: update jouw block frontend code!
 
+ 1.04 2017.11.20
+ - WYSIGING: build.py wou nie meer compile, daarom oorgeneem direk van github blockly.
+
 =====================
 KNOWN BUGS/ISSUES;
 
