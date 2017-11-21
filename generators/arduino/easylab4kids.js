@@ -547,12 +547,87 @@ Blockly.Arduino.ledje = function() {
             branch = Blockly.Arduino.statementToCode(this, 'F_EASYLED1_ELSE');
             code += ' else {\n' + branch + '\n}';
         }
-        console.log(" EASYLED1_sensor_data code:\n" + code);
+        //   console.log(" EASYLED1_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT EASYLED1_sensor_data:\n" + error4);
     }
     return code;
 };
+
+
+// declare_ledje
+Blockly.Arduino.declare_ledje = function() {
+    // If/elseif/else condition.
+    var n = 0;
+    var code = "";
+
+    try {
+        var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
+        var apparaat_state1 = this.getFieldValue('DECLARE_LEDJE1_STAAT');
+        var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'DECLARE_LEDJE1_IO_POORT', Blockly.Arduino.ORDER_ATOMIC) || "\"A2\"";
+        var apparaat_type1 = this.getFieldValue('DECLARE_LEDJE1_SENSOR');
+        var sensor_naam1 = this.getFieldValue('DECLARE_LEDJE_NAAM1') + veranderlike1;
+        var led1_waarde = Blockly.Arduino.valueToCode(this, 'DECLARE_LEDJE1_WAARDE', Blockly.Arduino.ORDER_ATOMIC) || -1;
+        var controller1 = apparaat_type1 == "LED" ? "" : "controller: \"" + apparaat_type1 + "\", ";
+        var globalVar3 = "var " + sensor_naam1 + " = '';";
+
+        veranderlike1 = sensor_naam1;
+        led1_waarde = led1_waarde > 255 ? 255 : led1_waarde;
+        Blockly.Arduino.definitions_["DECL_EASYLED1_sensor_data3" + veranderlike1] = globalVar3;
+        Blockly.Arduino.setups_['decl_setup_ledje' + veranderlike1] = "  " + veranderlike1 + " = new five.Led({" + controller1 + "pin: " + apparaat_poortNr1 + "});";
+
+        // console.log(" declare_ledje code:\n" + code);
+    } catch (error4) {
+        console.log("FOUT declare_ledje:\n" + error4);
+    }
+    return code;
+};
+
+// cmd_ledje
+Blockly.Arduino.cmd_ledje = function() {
+    // If/elseif/else condition.
+    var n = 0;
+    var code = "";
+
+    try {
+        var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
+        var apparaat_state1 = this.getFieldValue('CMD_LEDJE1_STAAT');
+        var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'CMD_LEDJE1_IO_POORT', Blockly.Arduino.ORDER_ATOMIC) || "\"A2\"";
+        var apparaat_type1 = this.getFieldValue('CMD_LEDJE1_SENSOR');
+        var sensor_naam1 = this.getFieldValue('CMD_LEDJE_NAAM1') + veranderlike1;
+        var led1_waarde = Blockly.Arduino.valueToCode(this, 'CMD_LEDJE1_WAARDE', Blockly.Arduino.ORDER_ATOMIC) || -1;
+        var controller1 = apparaat_type1 == "LED" ? "" : "controller: \"" + apparaat_type1 + "\", ";
+        var globalVar1 = "var " + sensor_naam1 + "_helderheid = " + led1_waarde + ";";
+        var globalVar2 = "var " + sensor_naam1 + "_staat = '" + apparaat_state1 + "';";
+
+        veranderlike1 = sensor_naam1;
+        led1_waarde = led1_waarde > 255 ? 255 : led1_waarde;
+        Blockly.Arduino.definitions_["CMD_EASYLED1_sensor_data" + veranderlike1] = globalVar1;
+        Blockly.Arduino.definitions_["CMD_EASYLED1_sensor_data2" + veranderlike1] = globalVar2;
+
+        // slegs van toepassing op PWM-pins, anders kry jy 'n foutmelding.
+        if (led1_waarde >= 0) {
+            Blockly.Arduino.setups_['setup_ledje_helderheid' + veranderlike1] = veranderlike1 + ".brightness(" + led1_waarde + ");";
+        }
+
+        //Blockly.Variables.predefinedVars = [];
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_helderheid");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
+
+        var code = sensor_naam1 + "." + apparaat_state1 + "();\n";
+        code += led1_waarde == -1 ? "" : " " + sensor_naam1 + ".brightness(" + led1_waarde + ");\n";;
+        code += " " + sensor_naam1 + "_staat = '" + apparaat_state1 + "';\n";
+        if (led1_waarde >= 0) {
+            code += " " + sensor_naam1 + "_helderheid = '" + led1_waarde + "';\n";
+        }
+
+        //  console.log(" declare_ledje code:\n" + code);
+    } catch (error4) {
+        console.log("FOUT declare_ledje:\n" + error4);
+    }
+    return code;
+};
+
 
 // Piezo buzzer
 Blockly.Arduino.piezo1 = function() {

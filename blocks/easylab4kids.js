@@ -108,6 +108,102 @@ Blockly.Blocks['ledje'] = {
     }
 }; // einde ledje
 
+// LED
+Blockly.Blocks['declare_ledje'] = {
+    /**
+     * Block for if/elseif/else condition.
+     * @this Blockly.Block
+     */
+    init: function() {
+        this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
+        this.setColour(109);
+        this.appendDummyInput()
+            .appendField("LED");
+        this.appendDummyInput()
+            .appendField("Soort LEDje")
+            .appendField(new Blockly.FieldImage("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSP5GdKwXzV007Sh-P5j6u6t7e1mkZeaEYVHDrSZURMNNEdU1il", 32, 32));
+
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                ["LEDje", "LED"],
+                ["Adafruit PCA9685 I2C", "PCA9685"]
+            ]), "DECLARE_LEDJE1_SENSOR");
+
+        this.appendDummyInput()
+            .appendField(" Ledje Naam.: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["Led1", "LEDJE_1"],
+                ["Led2", "LEDJE_2"],
+                ["Led3", "LEDJE_3"],
+                ["Led4", "LEDJE_5"],
+                ["Led5", "LEDJE_6"],
+                ["Led6", "LEDJE_7"],
+                ["Led7", "LEDJE_7"],
+                ["Led8", "LEDJE_8"]
+            ]), "DECLARE_LEDJE_NAAM1");
+
+        this.appendValueInput("DECLARE_LEDJE1_IO_POORT", "String")
+            .appendField("Ledje: ")
+            .setCheck("String");
+        this.setTooltip("default: EasyLab4Kids rood");
+
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        var thisBlock = this;
+        this.elseifCount_ = 0;
+        this.elseCount_ = 0;
+    }
+}; // einde ledje
+
+
+// LED
+Blockly.Blocks['cmd_ledje'] = {
+    /**
+     * Block for if/elseif/else condition.
+     * @this Blockly.Block
+     */
+    init: function() {
+        this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
+        this.setColour(109);
+        this.appendDummyInput()
+            .appendField("LED");
+        this.appendDummyInput()
+            .appendField(" Ledje Naam.: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["Led1", "LEDJE_1"],
+                ["Led2", "LEDJE_2"],
+                ["Led3", "LEDJE_3"],
+                ["Led4", "LEDJE_5"],
+                ["Led5", "LEDJE_6"],
+                ["Led6", "LEDJE_7"],
+                ["Led7", "LEDJE_7"],
+                ["Led8", "LEDJE_8"]
+            ]), "CMD_LEDJE_NAAM1");
+
+        this.appendDummyInput()
+            .appendField("Instelling")
+            .appendField(new Blockly.FieldDropdown([
+                ["Aan", "on"],
+                ["Uit", "off"],
+                ["Toggle", "toggle"]
+            ]), "CMD_LEDJE1_STAAT");
+
+        this.appendValueInput("CMD_LEDJE1_WAARDE", "Number")
+            .appendField("Helderheid [0-255]")
+            .setCheck("Number");
+        this.setInputsInline(true);
+        this.setTooltip("LED helderheid");
+
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+
+    }
+}; // einde ledje
+
+
 
 Blockly.Blocks['toggleswitch_close_open'] = {
     /**
@@ -1152,7 +1248,7 @@ Blockly.Blocks['ledje_knipper_fade'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-        this.setColour(135); // this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setColour(155); // this.setColour(Blockly.Blocks.procedures.HUE);
         this.appendDummyInput()
             .appendField("LED fadein");
         this.appendDummyInput()
