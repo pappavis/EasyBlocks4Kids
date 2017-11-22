@@ -445,7 +445,7 @@ Blockly.Blocks['declare_proximity_sensor_data'] = {
         this.setColour(145);
         this.appendDummyInput('F_PROXIMITY_DO0')
             .appendField(new Blockly.FieldImage("http://www.robotop.lv/285-home/ultrazvukovoj-datchik-rasstoyaniya.jpg", 32, 32))
-            .appendField("Parpkeersensor")
+            .appendField("Parkeersensor")
             .appendField(new Blockly.FieldDropdown([
                 ["HC-SR04 Sonar", "HCSR04"],
                 ["MB1000 analoog", "MB1000"],
