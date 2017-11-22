@@ -372,7 +372,7 @@ function checkCookie(cookieName) {
         if (url1 != "" && url1 != null) {
             // alert("Welcome again " + url1);
         } else {
-            url1 = "http://10.0.0.8:8081/easyblocks_post";
+            url1 = "http://localhost:8081/easyblocks_post";
             cookie.set(cookieName, url1, 365);
         }
 

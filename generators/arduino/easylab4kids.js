@@ -683,7 +683,7 @@ Blockly.Arduino.piezo1 = function() {
             branch = Blockly.Arduino.statementToCode(this, 'F_PIEZO_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        console.log(" piezo_buzzer_data code:\n" + code);
+        // console.log(" piezo_buzzer_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT piezo_buzzer_data:\n" + error4);
     }
@@ -786,7 +786,7 @@ Blockly.Arduino.proximity_sensor_data = function() {
             branch = Blockly.Arduino.statementToCode(this, 'F_PROXIMITY_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        console.log(" proximity_sensor_data code:\n" + code);
+        // console.log(" proximity_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT proximity_sensor_data:\n" + error4);
     }
@@ -818,7 +818,7 @@ Blockly.Arduino.declare_proximity_sensor_data = function() {
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_afstand");
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_IOpoort");
 
-        console.log(" proximity_sensor_data code:\n" + code);
+        // console.log(" proximity_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT proximity_sensor_data:\n" + error4);
     }
@@ -851,7 +851,7 @@ Blockly.Arduino.event_proximity_sensor_data = function() {
         code += "    " + branch + "\n";
         code += "});\n";
 
-        console.log(" event_proximity_sensor_data code:\n" + code);
+        // console.log(" event_proximity_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT event_proximity_sensor_data:\n" + error4);
     }
@@ -906,7 +906,7 @@ Blockly.Arduino.button_Down_hold_up = function() {
             branch = Blockly.Arduino.statementToCode(this, 'BUTTON_ON_OFF_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
+        // console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
     } catch (error4) {
         console.log("FOUT BUTTON_ON_OFF_close_open:\n" + error4);
     }
@@ -969,7 +969,7 @@ Blockly.Arduino.event_button_Down_hold_up = function() {
         code += "  " + branch + "\n";
         code += "});\n";
 
-        console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
+        // console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
     } catch (error4) {
         console.log("FOUT BUTTON_ON_OFF_close_open:\n" + error4);
     }
@@ -1019,8 +1019,8 @@ Blockly.Arduino.ledje_knipper_fade = function() {
         code += "     " + sensor_naam1 + "_delay = " + led1_knipper_ms + ";\n";
         code += "   } catch (fout1) {};\n";
 
-        console.log(" ledje_knipper_fade code:\n" + code);
-        console.log("ledje_knipper_fade: led1_knipper_ms=" + led1_knipper_ms);
+       //  console.log(" ledje_knipper_fade code:\n" + code);
+       //  console.log("ledje_knipper_fade: led1_knipper_ms=" + led1_knipper_ms);
     } catch (error4) {
         console.log("FOUT ledje_knipper_fade:\n" + error4);
     }
@@ -1125,7 +1125,7 @@ Blockly.Arduino.servo1 = function() {
             branch = Blockly.Arduino.statementToCode(this, 'SERVO1_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        console.log(" servo1 code:\n" + code);
+        // console.log(" servo1 code:\n" + code);
     } catch (error4) {
         console.log("FOUT servo1, stap=" + debugStap1 + ",\nfout=" + error4);
     }
