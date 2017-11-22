@@ -365,7 +365,7 @@ Blockly.Blocks['piezo1'] = {
     }
 };
 
-// HC-SR04 Sonar
+// HC_SR401 Sonar
 Blockly.Blocks['proximity_sensor_data'] = {
     /**
      * Block for if/elseif/else condition.
@@ -380,14 +380,14 @@ Blockly.Blocks['proximity_sensor_data'] = {
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
         this.setColour(145);
         this.appendDummyInput()
-            .appendField("EasyLab-afstand sensor");
+            .appendField("Parkeersensor");
         this.appendDummyInput()
             .appendField(" Identificatie: ")
             .appendField(new Blockly.FieldDropdown([
-                ["Sonar1", "HC_SR401_1"],
-                ["Sonar2", "HC_SR401_2"],
-                ["Sonar3", "HC_SR401_3"],
-                ["Sonar4", "HC_SR401_4"]
+                ["Parkeersensor1", "Parkeersensor_1"],
+                ["Parkeersensor2", "Parkeersensor_2"],
+                ["Parkeersensor3", "Parkeersensor_3"],
+                ["Parkeersensor4", "Parkeersensor_4"]
             ]), "SENSOR_NAAM1");
 
         this.appendStatementInput('F_PROXIMITY_DO0')
@@ -445,7 +445,7 @@ Blockly.Blocks['declare_proximity_sensor_data'] = {
         this.setColour(145);
         this.appendDummyInput('F_PROXIMITY_DO0')
             .appendField(new Blockly.FieldImage("http://www.robotop.lv/285-home/ultrazvukovoj-datchik-rasstoyaniya.jpg", 32, 32))
-            .appendField("Soort afstandsensor")
+            .appendField("Parpkeersensor")
             .appendField(new Blockly.FieldDropdown([
                 ["HC-SR04 Sonar", "HCSR04"],
                 ["MB1000 analoog", "MB1000"],
@@ -463,10 +463,10 @@ Blockly.Blocks['declare_proximity_sensor_data'] = {
         this.appendDummyInput()
             .appendField(" Welke sensor: ")
             .appendField(new Blockly.FieldDropdown([
-                ["Sonar1", "HC_SR401_1"],
-                ["Sonar2", "HC_SR401_2"],
-                ["Sonar3", "HC_SR401_3"],
-                ["Sonar4", "HC_SR401_4"]
+                ["Parkeersensor1", "Parkeersensor_1"],
+                ["Parkeersensor2", "Parkeersensor_2"],
+                ["Parkeersensor3", "Parkeersensor_3"],
+                ["Parkeersensor4", "Parkeersensor_4"]
             ]), "DECLARE_PROX_SENSOR_NAAM1");
 
         this.appendValueInput("DECLARE_PROX_SENSOR_IO_POORT", "String")
@@ -508,10 +508,10 @@ Blockly.Blocks['event_proximity_sensor_data'] = {
             .appendField(new Blockly.FieldImage("http://www.robotop.lv/285-home/ultrazvukovoj-datchik-rasstoyaniya.jpg", 32, 32))
             .appendField(" Sensor naam: ")
             .appendField(new Blockly.FieldDropdown([
-                ["Sonar1", "HC_SR401_1"],
-                ["Sonar2", "HC_SR401_2"],
-                ["Sonar3", "HC_SR401_3"],
-                ["Sonar4", "HC_SR401_4"]
+                ["Parkeersensor1", "Parkeersensor_1"],
+                ["Parkeersensor2", "Parkeersensor_2"],
+                ["Parkeersensor3", "Parkeersensor_3"],
+                ["Parkeersensor4", "Parkeersensor_4"]
             ]), "EVENT_PROXIMITY_SENSOR_NAAM");
 
         this.setPreviousStatement(true);
