@@ -19,7 +19,7 @@
  */
 
 /**
- * @fileoverview Empty name space for the Message singleton.
+ * @fileoverview Core JavaScript library for Blockly.
  * @author scr@google.com (Sheridan Rawlins)
  */
 'use strict';
@@ -29,7 +29,6 @@
  * Msg gets populated in the message files.
  */
 goog.provide('Blockly.Msg');
-
 
 /**
  * Back up original getMsg function.
@@ -42,7 +41,7 @@ goog.getMsgOrig = goog.getMsg;
  * Overrides the default Closure function to check for a Blockly.Msg first.
  * Used infrequently, only known case is TODAY button in date picker.
  * @param {string} str Translatable string, places holders in the form {$foo}.
- * @param {Object.<string, string>=} opt_values Maps place holder name to value.
+ * @param {Object<string, string>=} opt_values Maps place holder name to value.
  * @return {string} message with placeholders filled.
  * @suppress {duplicate}
  */

@@ -108,7 +108,7 @@ Blockly.Blocks['ledje'] = {
     }
 }; // einde ledje
 
-// LED
+// declare_ledje
 Blockly.Blocks['declare_ledje'] = {
     /**
      * Block for if/elseif/else condition.
@@ -116,19 +116,16 @@ Blockly.Blocks['declare_ledje'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-        this.setColour(109);
+        this.setColour(105);
         this.appendDummyInput()
             .appendField("LED");
         this.appendDummyInput()
             .appendField("Soort LEDje")
-            .appendField(new Blockly.FieldImage("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSP5GdKwXzV007Sh-P5j6u6t7e1mkZeaEYVHDrSZURMNNEdU1il", 32, 32));
-
-        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSP5GdKwXzV007Sh-P5j6u6t7e1mkZeaEYVHDrSZURMNNEdU1il", 32, 32))
             .appendField(new Blockly.FieldDropdown([
                 ["LEDje", "LED"],
                 ["Adafruit PCA9685 I2C", "PCA9685"]
             ]), "DECLARE_LEDJE1_SENSOR");
-
         this.appendDummyInput()
             .appendField(" Ledje Naam.: ")
             .appendField(new Blockly.FieldDropdown([
@@ -151,15 +148,11 @@ Blockly.Blocks['declare_ledje'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
 
-        // Assign 'this' to a variable for use in the tooltip closure below.
-        var thisBlock = this;
-        this.elseifCount_ = 0;
-        this.elseCount_ = 0;
     }
-}; // einde ledje
+}; // einde declare_ledje
 
 
-// LED
+// cmd_ledje
 Blockly.Blocks['cmd_ledje'] = {
     /**
      * Block for if/elseif/else condition.
@@ -167,9 +160,10 @@ Blockly.Blocks['cmd_ledje'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-        this.setColour(109);
+        this.setColour(105);
         this.appendDummyInput()
-            .appendField("LED");
+            .appendField("LEDje doen")
+            .appendField(new Blockly.FieldImage("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSP5GdKwXzV007Sh-P5j6u6t7e1mkZeaEYVHDrSZURMNNEdU1il", 32, 32));
         this.appendDummyInput()
             .appendField(" Ledje Naam.: ")
             .appendField(new Blockly.FieldDropdown([
@@ -191,18 +185,16 @@ Blockly.Blocks['cmd_ledje'] = {
                 ["Toggle", "toggle"]
             ]), "CMD_LEDJE1_STAAT");
 
-        this.appendValueInput("CMD_LEDJE1_WAARDE", "Number")
-            .appendField("Helderheid [0-255]")
-            .setCheck("Number");
-        this.setInputsInline(true);
-        this.setTooltip("LED helderheid");
+        //        this.appendValueInput("LEDJE1_WAARDE", "Number")
+        //            .appendField("Helderheid [0-255]")
+        //            .setCheck("Number");
 
+        this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
 
     }
-}; // einde ledje
-
+}; // einde cmd_ledje
 
 
 Blockly.Blocks['toggleswitch_close_open'] = {
@@ -365,7 +357,7 @@ Blockly.Blocks['piezo1'] = {
     }
 };
 
-// HC_SR401 Sonar
+// HC-SR04 Sonar
 Blockly.Blocks['proximity_sensor_data'] = {
     /**
      * Block for if/elseif/else condition.
@@ -380,14 +372,14 @@ Blockly.Blocks['proximity_sensor_data'] = {
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
         this.setColour(145);
         this.appendDummyInput()
-            .appendField("Parkeersensor");
+            .appendField("EasyLab-afstand sensor");
         this.appendDummyInput()
             .appendField(" Identificatie: ")
             .appendField(new Blockly.FieldDropdown([
-                ["Parkeersensor1", "Parkeersensor_1"],
-                ["Parkeersensor2", "Parkeersensor_2"],
-                ["Parkeersensor3", "Parkeersensor_3"],
-                ["Parkeersensor4", "Parkeersensor_4"]
+                ["Sonar1", "HC_SR401_1"],
+                ["Sonar2", "HC_SR401_2"],
+                ["Sonar3", "HC_SR401_3"],
+                ["Sonar4", "HC_SR401_4"]
             ]), "SENSOR_NAAM1");
 
         this.appendStatementInput('F_PROXIMITY_DO0')
@@ -445,7 +437,7 @@ Blockly.Blocks['declare_proximity_sensor_data'] = {
         this.setColour(145);
         this.appendDummyInput('F_PROXIMITY_DO0')
             .appendField(new Blockly.FieldImage("http://www.robotop.lv/285-home/ultrazvukovoj-datchik-rasstoyaniya.jpg", 32, 32))
-            .appendField("Parkeersensor")
+            .appendField("Soort afstandsensor")
             .appendField(new Blockly.FieldDropdown([
                 ["HC-SR04 Sonar", "HCSR04"],
                 ["MB1000 analoog", "MB1000"],
@@ -463,10 +455,10 @@ Blockly.Blocks['declare_proximity_sensor_data'] = {
         this.appendDummyInput()
             .appendField(" Welke sensor: ")
             .appendField(new Blockly.FieldDropdown([
-                ["Parkeersensor1", "Parkeersensor_1"],
-                ["Parkeersensor2", "Parkeersensor_2"],
-                ["Parkeersensor3", "Parkeersensor_3"],
-                ["Parkeersensor4", "Parkeersensor_4"]
+                ["Sonar1", "HC_SR401_1"],
+                ["Sonar2", "HC_SR401_2"],
+                ["Sonar3", "HC_SR401_3"],
+                ["Sonar4", "HC_SR401_4"]
             ]), "DECLARE_PROX_SENSOR_NAAM1");
 
         this.appendValueInput("DECLARE_PROX_SENSOR_IO_POORT", "String")
@@ -508,10 +500,10 @@ Blockly.Blocks['event_proximity_sensor_data'] = {
             .appendField(new Blockly.FieldImage("http://www.robotop.lv/285-home/ultrazvukovoj-datchik-rasstoyaniya.jpg", 32, 32))
             .appendField(" Sensor naam: ")
             .appendField(new Blockly.FieldDropdown([
-                ["Parkeersensor1", "Parkeersensor_1"],
-                ["Parkeersensor2", "Parkeersensor_2"],
-                ["Parkeersensor3", "Parkeersensor_3"],
-                ["Parkeersensor4", "Parkeersensor_4"]
+                ["Sonar1", "HC_SR401_1"],
+                ["Sonar2", "HC_SR401_2"],
+                ["Sonar3", "HC_SR401_3"],
+                ["Sonar4", "HC_SR401_4"]
             ]), "EVENT_PROXIMITY_SENSOR_NAAM");
 
         this.setPreviousStatement(true);
@@ -1248,7 +1240,7 @@ Blockly.Blocks['ledje_knipper_fade'] = {
      */
     init: function() {
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-        this.setColour(155); // this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setColour(135); // this.setColour(Blockly.Blocks.procedures.HUE);
         this.appendDummyInput()
             .appendField("LED fadein");
         this.appendDummyInput()
@@ -2123,6 +2115,108 @@ Blockly.Blocks['CapacitiveTouch'] = {
     }
 }; // einde CapacitiveTouch
 
+// Capacitive touch --> zie   http://johnny-five.io/examples/sensor-fsr/ en http://www.instructables.com/id/Capacitive-Touch-Arduino-Keyboard-Piano/
+Blockly.Blocks['declare_CapacitiveTouch'] = {
+    /**
+     * Block for if/elseif/else condition.
+     * @this Blockly.Block
+     */
+    init: function() {
+        var veranderlike1 = Math.floor((Math.random() * 100) + 1);
+        var globalVar1 = "var Potmeter" + veranderlike1 + ";\n";
+        //Blockly.Arduino.definitions_["globalVar1_data" + veranderlike1] = globalVar1;
+        // Blockly.Variables.predefinedVars.push(globalVar1);
+
+        this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
+        this.setColour(75); // this.setColour(Blockly.Blocks.procedures.HUE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("https://cdn.instructables.com/F2X/LMHK/HH11RZS1/F2XLMHKHH11RZS1.SMALL.jpg", 32, 32))
+            .appendField("vinger gevoelig sensor")
+            .appendField(new Blockly.FieldDropdown([
+                ["Data", "data"],
+                ["Buiten sensor bereik", "change"],
+                ["Slide [slip sensor]", "slide"]
+            ]), "DECLARE_TOUCH1_STATE");
+        this.appendDummyInput()
+            .appendField(" Identificatie: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["VingerGevoelig1", "VingerGevoelig_1"],
+                ["VingerGevoelig2", "VingerGevoelig_2"],
+                ["VingerGevoelig3", "VingerGevoelig_3"],
+                ["VingerGevoelig4", "VingerGevoelig_4"],
+                ["VingerGevoelig5", "VingerGevoelig_5"],
+                ["VingerGevoelig6", "VingerGevoelig_6"],
+                ["VingerGevoelig7", "VingerGevoelig_7"]
+            ]), "DECLARE_TOUCH1_NAAM1");
+        this.appendDummyInput()
+            .appendField(" Controller: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["Stukje tin folie ", "DEFAULT"],
+                ["Tinkerkit touch", "TINKERKIT"],
+                ["Touchpad - MPR121", "MPR121"],
+                ["Touchpad - MPR121_SHIELD", "MPR121_SHIELD"],
+                ["Touchpad - MPR121_KEYPAD", "MPR121_KEYPAD"],
+                ["Touchpad - MPR121, Sensitivity", "MPR121"],
+                ["Touchpad - MPR121QR2_SHIELD", "MPR121QR2_SHIELD"],
+                ["Touchpad - Grove QTOUCH", "QTOUCH"]
+            ]), "DECLARE_TOUCH1_CONTROLLER1");
+
+        this.appendValueInput("DECLARE_TOUCH1_PWM_POORTNUMMER", "String")
+            .appendField("PWM IO Poort")
+            .setCheck("String");
+        this.setTooltip("default EasyLab4Kids Servo op D10");
+
+        this.appendValueInput("DECLARE_TOUCH1_IO_POORTNUMMER", "String")
+            .appendField("Tin folie IO-poort")
+            .setCheck("String");
+        this.setTooltip("default Arduino D8");
+
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+}; // einde declare_CapacitiveTouch
+
+Blockly.Blocks['event_CapacitiveTouch'] = {
+    /**
+     * Block for if/elseif/else condition.
+     * @this Blockly.Block
+     */
+    init: function() {
+        var veranderlike1 = Math.floor((Math.random() * 100) + 1);
+        var globalVar1 = "var Potmeter" + veranderlike1 + ";\n";
+        //Blockly.Arduino.definitions_["globalVar1_data" + veranderlike1] = globalVar1;
+        // Blockly.Variables.predefinedVars.push(globalVar1);
+
+        this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
+        this.setColour(75); // this.setColour(Blockly.Blocks.procedures.HUE);
+        this.appendStatementInput("EVENT_TOUCH1_DO")
+            .appendField(new Blockly.FieldImage("https://cdn.instructables.com/F2X/LMHK/HH11RZS1/F2XLMHKHH11RZS1.SMALL.jpg", 32, 32))
+            .appendField("vinger gevoelig sensor")
+            .appendField(new Blockly.FieldDropdown([
+                ["Data", "data"],
+                ["Buiten sensor bereik", "change"],
+                ["Slide [slip sensor]", "slide"]
+            ]), "EVENT_TOUCH1_STATE");
+        this.appendDummyInput()
+            .appendField(" Identificatie: ")
+            .appendField(new Blockly.FieldDropdown([
+                ["VingerGevoelig1", "VingerGevoelig_1"],
+                ["VingerGevoelig2", "VingerGevoelig_2"],
+                ["VingerGevoelig3", "VingerGevoelig_3"],
+                ["VingerGevoelig4", "VingerGevoelig_4"],
+                ["VingerGevoelig5", "VingerGevoelig_5"],
+                ["VingerGevoelig6", "VingerGevoelig_6"],
+                ["VingerGevoelig7", "VingerGevoelig_7"]
+            ]), "EVENT_TOUCH1_NAAM1");
+
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+}; // einde event_CapacitiveTouch
+
+
 // kode vir L923D motordiver --> https://github.com/rwaldron/johnny-five/wiki/motor
 Blockly.Blocks['motorshield'] = {
     /**
@@ -2583,7 +2677,7 @@ Blockly.Blocks['event_hygrometer'] = {
         this.elseifCount_ = 0;
         this.elseCount_ = 0;
     }
-}; // einde event_proximity_sensor_data
+}; // einde event_hygrometer
 
 
 Blockly.Blocks['test_event_header'] = {

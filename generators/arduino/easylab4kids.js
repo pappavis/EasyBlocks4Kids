@@ -547,7 +547,7 @@ Blockly.Arduino.ledje = function() {
             branch = Blockly.Arduino.statementToCode(this, 'F_EASYLED1_ELSE');
             code += ' else {\n' + branch + '\n}';
         }
-        //   console.log(" EASYLED1_sensor_data code:\n" + code);
+        console.log(" EASYLED1_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT EASYLED1_sensor_data:\n" + error4);
     }
@@ -569,19 +569,36 @@ Blockly.Arduino.declare_ledje = function() {
         var sensor_naam1 = this.getFieldValue('DECLARE_LEDJE_NAAM1') + veranderlike1;
         var led1_waarde = Blockly.Arduino.valueToCode(this, 'DECLARE_LEDJE1_WAARDE', Blockly.Arduino.ORDER_ATOMIC) || -1;
         var controller1 = apparaat_type1 == "LED" ? "" : "controller: \"" + apparaat_type1 + "\", ";
+        var globalVar1 = "var " + sensor_naam1 + "_helderheid = " + led1_waarde + ";";
+        var globalVar2 = "var " + sensor_naam1 + "_staat = '" + apparaat_state1 + "';";
         var globalVar3 = "var " + sensor_naam1 + " = '';";
 
         veranderlike1 = sensor_naam1;
         led1_waarde = led1_waarde > 255 ? 255 : led1_waarde;
-        Blockly.Arduino.definitions_["DECL_EASYLED1_sensor_data3" + veranderlike1] = globalVar3;
-        Blockly.Arduino.setups_['decl_setup_ledje' + veranderlike1] = "  " + veranderlike1 + " = new five.Led({" + controller1 + "pin: " + apparaat_poortNr1 + "});";
+        Blockly.Arduino.definitions_["DECLARE_EASYLED1_sensor_data" + veranderlike1] = globalVar1;
+        //        Blockly.Arduino.definitions_["DECLARE_EASYLED1_sensor_data2" + veranderlike1] = globalVar2;
+        //        Blockly.Arduino.definitions_["DECLARE_EASYLED1_sensor_data3" + veranderlike1] = globalVar3;
+        Blockly.Arduino.setups_['setup_ledje' + veranderlike1] = "  " + veranderlike1 + " = new five.Led({" + controller1 + "pin: " + apparaat_poortNr1 + "});";
 
-        // console.log(" declare_ledje code:\n" + code);
+        if (led1_waarde >= 0) {
+            Blockly.Arduino.setups_['setup_ledje_helderheid' + veranderlike1] = veranderlike1 + ".brightness(" + led1_waarde + ");";
+        }
+
+        //Blockly.Variables.predefinedVars = [];
+        Blockly.Variables.predefinedVars.push(sensor_naam1);
+        if (led1_waarde >= 0) {
+            Blockly.Variables.predefinedVars.push(sensor_naam1 + "_helderheid");
+        }
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
+
+
+        //  console.log(" EASYLED1_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT declare_ledje:\n" + error4);
     }
     return code;
 };
+
 
 // cmd_ledje
 Blockly.Arduino.cmd_ledje = function() {
@@ -592,27 +609,31 @@ Blockly.Arduino.cmd_ledje = function() {
     try {
         var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
         var apparaat_state1 = this.getFieldValue('CMD_LEDJE1_STAAT');
-        var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'CMD_LEDJE1_IO_POORT', Blockly.Arduino.ORDER_ATOMIC) || "\"A2\"";
         var apparaat_type1 = this.getFieldValue('CMD_LEDJE1_SENSOR');
         var sensor_naam1 = this.getFieldValue('CMD_LEDJE_NAAM1') + veranderlike1;
         var led1_waarde = Blockly.Arduino.valueToCode(this, 'CMD_LEDJE1_WAARDE', Blockly.Arduino.ORDER_ATOMIC) || -1;
         var controller1 = apparaat_type1 == "LED" ? "" : "controller: \"" + apparaat_type1 + "\", ";
         var globalVar1 = "var " + sensor_naam1 + "_helderheid = " + led1_waarde + ";";
         var globalVar2 = "var " + sensor_naam1 + "_staat = '" + apparaat_state1 + "';";
+        var globalVar3 = "var " + sensor_naam1 + " = '';";
 
         veranderlike1 = sensor_naam1;
         led1_waarde = led1_waarde > 255 ? 255 : led1_waarde;
-        Blockly.Arduino.definitions_["CMD_EASYLED1_sensor_data" + veranderlike1] = globalVar1;
-        Blockly.Arduino.definitions_["CMD_EASYLED1_sensor_data2" + veranderlike1] = globalVar2;
+        Blockly.Arduino.definitions_["EASYLED1_sensor_data" + veranderlike1] = globalVar1;
+        Blockly.Arduino.definitions_["EASYLED1_sensor_data2" + veranderlike1] = globalVar2;
+        Blockly.Arduino.definitions_["EASYLED1_sensor_data3" + veranderlike1] = globalVar3;
 
-        // slegs van toepassing op PWM-pins, anders kry jy 'n foutmelding.
         if (led1_waarde >= 0) {
             Blockly.Arduino.setups_['setup_ledje_helderheid' + veranderlike1] = veranderlike1 + ".brightness(" + led1_waarde + ");";
         }
 
         //Blockly.Variables.predefinedVars = [];
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_helderheid");
+        Blockly.Variables.predefinedVars.push(sensor_naam1);
+        if (led1_waarde >= 0) {
+            Blockly.Variables.predefinedVars.push(sensor_naam1 + "_helderheid");
+        }
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
+
 
         var code = sensor_naam1 + "." + apparaat_state1 + "();\n";
         code += led1_waarde == -1 ? "" : " " + sensor_naam1 + ".brightness(" + led1_waarde + ");\n";;
@@ -621,9 +642,9 @@ Blockly.Arduino.cmd_ledje = function() {
             code += " " + sensor_naam1 + "_helderheid = '" + led1_waarde + "';\n";
         }
 
-        //  console.log(" declare_ledje code:\n" + code);
+        //        console.log(" cmd_ledje code:\n" + code);
     } catch (error4) {
-        console.log("FOUT declare_ledje:\n" + error4);
+        console.log("FOUT cmd_ledje:\n" + error4);
     }
     return code;
 };
@@ -683,7 +704,7 @@ Blockly.Arduino.piezo1 = function() {
             branch = Blockly.Arduino.statementToCode(this, 'F_PIEZO_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        // console.log(" piezo_buzzer_data code:\n" + code);
+        console.log(" piezo_buzzer_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT piezo_buzzer_data:\n" + error4);
     }
@@ -786,7 +807,7 @@ Blockly.Arduino.proximity_sensor_data = function() {
             branch = Blockly.Arduino.statementToCode(this, 'F_PROXIMITY_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        // console.log(" proximity_sensor_data code:\n" + code);
+        console.log(" proximity_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT proximity_sensor_data:\n" + error4);
     }
@@ -818,7 +839,7 @@ Blockly.Arduino.declare_proximity_sensor_data = function() {
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_afstand");
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_IOpoort");
 
-        // console.log(" proximity_sensor_data code:\n" + code);
+        console.log(" proximity_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT proximity_sensor_data:\n" + error4);
     }
@@ -851,7 +872,7 @@ Blockly.Arduino.event_proximity_sensor_data = function() {
         code += "    " + branch + "\n";
         code += "});\n";
 
-        // console.log(" event_proximity_sensor_data code:\n" + code);
+        console.log(" event_proximity_sensor_data code:\n" + code);
     } catch (error4) {
         console.log("FOUT event_proximity_sensor_data:\n" + error4);
     }
@@ -906,7 +927,7 @@ Blockly.Arduino.button_Down_hold_up = function() {
             branch = Blockly.Arduino.statementToCode(this, 'BUTTON_ON_OFF_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        // console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
+        console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
     } catch (error4) {
         console.log("FOUT BUTTON_ON_OFF_close_open:\n" + error4);
     }
@@ -969,7 +990,7 @@ Blockly.Arduino.event_button_Down_hold_up = function() {
         code += "  " + branch + "\n";
         code += "});\n";
 
-        // console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
+        console.log(" BUTTON_ON_OFF_close_open.branch:\n" + branch);
     } catch (error4) {
         console.log("FOUT BUTTON_ON_OFF_close_open:\n" + error4);
     }
@@ -1019,8 +1040,8 @@ Blockly.Arduino.ledje_knipper_fade = function() {
         code += "     " + sensor_naam1 + "_delay = " + led1_knipper_ms + ";\n";
         code += "   } catch (fout1) {};\n";
 
-       //  console.log(" ledje_knipper_fade code:\n" + code);
-       //  console.log("ledje_knipper_fade: led1_knipper_ms=" + led1_knipper_ms);
+        console.log(" ledje_knipper_fade code:\n" + code);
+        console.log("ledje_knipper_fade: led1_knipper_ms=" + led1_knipper_ms);
     } catch (error4) {
         console.log("FOUT ledje_knipper_fade:\n" + error4);
     }
@@ -1125,7 +1146,7 @@ Blockly.Arduino.servo1 = function() {
             branch = Blockly.Arduino.statementToCode(this, 'SERVO1_ELSE');
             code += ' else {\n' + branch + '}';
         }
-        // console.log(" servo1 code:\n" + code);
+        console.log(" servo1 code:\n" + code);
     } catch (error4) {
         console.log("FOUT servo1, stap=" + debugStap1 + ",\nfout=" + error4);
     }
@@ -1697,6 +1718,90 @@ Blockly.Arduino.CapacitiveTouch = function() {
     }
     return code + '\n';
 }; // einde CapacitiveTouch
+
+Blockly.Arduino.declare_CapacitiveTouch = function() {
+    // If/elseif/else condition.
+    var n = 0;
+    try {
+        var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
+        var ErrNr1 = Math.floor((Math.random() * 100) + 1);
+        var switch_state1 = this.getFieldValue('DECLARE_TOUCH1_STATE');
+        var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 8;
+        var apparaat_PWMpoortNr1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 10;
+        var apparaat_type1 = this.getFieldValue('DECLARE_TOUCH1_CONTROLLER1');
+        var sensor_naam1 = this.getFieldValue('DECLARE_TOUCH1_NAAM1') + veranderlike1;
+        var sensor_freq1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_FREQ', Blockly.Arduino.ORDER_ATOMIC) || 50;
+        var globalVar1 = "var " + sensor_naam1 + ";\n";
+
+        veranderlike1 = sensor_naam1;
+        apparaat_type1 = apparaat_type1 == "DIGITAL" ? "digital" : "analog";
+        var sensor_scale_max1 = sensor_scale_max1 > 180 ? 180 : sensor_scale_max1;
+        var sensor_scale_min1 = sensor_scale_min1 < 0 || sensor_scale_min1 > 180 ? 0 : sensor_scale_min1;
+        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data" + sensor_naam1] = globalVar1;
+        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data1" + sensor_naam1] = " var " + sensor_naam1 + "_staat = '';";
+        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data2" + sensor_naam1] = " var " + sensor_naam1 + "_value = '';";
+        Blockly.Arduino.setups_['DECLARE_CapacitiveTouch' + sensor_naam1] = " var " + sensor_naam1 + " = new five.Sensor({pin: " + apparaat_poortNr1 + ", type: \"" + apparaat_type1 + "\", freq: " + sensor_freq1 + ", threshold: 5});";
+        // Blockly.Arduino.setups_['TOUCH1_scale' + veranderlike1] = sensor_naam1 + ".scaleTo(0, " + sensor_freq1 + ");";
+
+        Blockly.Variables.predefinedVars.push(sensor_naam1);
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_value");
+
+        //  var code = 'if (' + argument + ') {\n' + branch + '\n}';
+        var code = "";
+
+        // console.log(" TOUCH1_close_open.branch:\n" + branch);
+    } catch (error4) {
+        console.log("FOUT declare_CapacitiveTouch:\n" + error4);
+    }
+    return code + '\n';
+}; // einde declare_CapacitiveTouch
+
+
+Blockly.Arduino.event_CapacitiveTouch = function() {
+    // If/elseif/else condition.
+    var n = 0;
+    try {
+        var veranderlike1 = ""; // Math.floor((Math.random() * 100) + 1);
+        var ErrNr1 = Math.floor((Math.random() * 100) + 1);
+        var switch_state1 = this.getFieldValue('EVENT_TOUCH1_STATE');
+        var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'EVENT_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 8;
+        var apparaat_PWMpoortNr1 = Blockly.Arduino.valueToCode(this, 'EVENT_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 10;
+        var apparaat_type1 = this.getFieldValue('EVENT_TOUCH1_CONTROLLER1');
+        var sensor_naam1 = this.getFieldValue('EVENT_TOUCH1_NAAM1') + veranderlike1;
+        var sensor_freq1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_FREQ', Blockly.Arduino.ORDER_ATOMIC) || 50;
+        var globalVar1 = "var " + sensor_naam1 + ";\n";
+
+        veranderlike1 = sensor_naam1;
+        apparaat_type1 = apparaat_type1 == "DIGITAL" ? "digital" : "analog";
+        var sensor_scale_max1 = sensor_scale_max1 > 180 ? 180 : sensor_scale_max1;
+        var sensor_scale_min1 = sensor_scale_min1 < 0 || sensor_scale_min1 > 180 ? 0 : sensor_scale_min1;
+        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data" + sensor_naam1] = globalVar1;
+        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data3" + sensor_naam1] = " var " + sensor_naam1 + "_scaled = '';";
+        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data4" + sensor_naam1] = " var " + sensor_naam1 + "_raw = '';";
+        // Blockly.Arduino.setups_['TOUCH1_scale' + veranderlike1] = sensor_naam1 + ".scaleTo(0, " + sensor_freq1 + ");";
+
+        Blockly.Variables.predefinedVars.push(sensor_naam1);
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_scaled");
+        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_raw");
+
+        var branch = Blockly.Arduino.statementToCode(this, 'EVENT_TOUCH1_DO');
+        //  var code = 'if (' + argument + ') {\n' + branch + '\n}';
+        var code = "\n" + sensor_naam1 + ".scale(" + sensor_scale_min1 + ", " + sensor_scale_max1 + ").on(\"" + switch_state1 + "\", function() {\n";
+        code += "     " + sensor_naam1 + "_staat = \"" + switch_state1 + "\";\n";
+        code += "     " + sensor_naam1 + "_value = " + sensor_naam1 + ".value;\n";
+        code += "     " + sensor_naam1 + "_scaled = " + sensor_naam1 + ".scaled;\n";
+        code += "     " + sensor_naam1 + "_raw = " + sensor_naam1 + ".raw;\n";
+        code += "  " + branch + "\n";
+        code += "});\n";
+
+        // console.log(" TOUCH1_close_open.branch:\n" + branch);
+    } catch (error4) {
+        console.log("FOUT declare_CapacitiveTouch:\n" + error4);
+    }
+    return code + '\n';
+}; // einde event_CapacitiveTouch
+
 
 
 Blockly.Arduino.motorshield = function() {

@@ -19,7 +19,7 @@
  */
 
 /**
- * @fileoverview Image field.  Used for pictures, icons, etc.
+ * @fileoverview Image field.  Used for titles, labels, etc.
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
@@ -28,37 +28,45 @@ goog.provide('Blockly.FieldImage');
 
 goog.require('Blockly.Field');
 goog.require('goog.dom');
-goog.require('goog.math.Size');
 goog.require('goog.userAgent');
 
 
 /**
- * Class for an image on a block.
+ * Class for an image.
  * @param {string} src The URL of the image.
  * @param {number} width Width of the image.
  * @param {number} height Height of the image.
  * @param {string=} opt_alt Optional alt text for when block is collapsed.
- * @param {Function=} opt_onClick Optional function to be called when the image
- *     is clicked.  If opt_onClick is defined, opt_alt must also be defined.
  * @extends {Blockly.Field}
  * @constructor
  */
-Blockly.FieldImage = function(src, width, height, opt_alt, opt_onClick) {
+Blockly.FieldImage = function(src, width, height, opt_alt) {
   this.sourceBlock_ = null;
-
   // Ensure height and width are numbers.  Strings are bad at math.
   this.height_ = Number(height);
   this.width_ = Number(width);
-  this.size_ = new goog.math.Size(this.width_,
-      this.height_ + 2 * Blockly.BlockSvg.INLINE_PADDING_Y);
+  this.size_ = {height: this.height_ + 10, width: this.width_};
   this.text_ = opt_alt || '';
   this.setValue(src);
-
-  if (typeof opt_onClick == 'function') {
-    this.clickHandler_ = opt_onClick;
-  }
 };
 goog.inherits(Blockly.FieldImage, Blockly.Field);
+
+/**
+ * Clone this FieldImage.
+ * @return {!Blockly.FieldImage} The result of calling the constructor again
+ *   with the current values of the arguments used during construction.
+ */
+Blockly.FieldImage.prototype.clone = function() {
+  return new Blockly.FieldImage(this.getSrc(), this.width_, this.height_,
+      this.getText());
+};
+
+/**
+ * Rectangular mask used by Firefox.
+ * @type {Element}
+ * @private
+ */
+Blockly.FieldImage.prototype.rectElement_ = null;
 
 /**
  * Editable fields are saved by the XML renderer, non-editable fields are not.
@@ -67,34 +75,37 @@ Blockly.FieldImage.prototype.EDITABLE = false;
 
 /**
  * Install this image on a block.
+ * @param {!Blockly.Block} block The block containing this text.
  */
-Blockly.FieldImage.prototype.init = function() {
-  if (this.fieldGroup_) {
+Blockly.FieldImage.prototype.init = function(block) {
+  if (this.sourceBlock_) {
     // Image has already been initialized once.
     return;
   }
+  this.sourceBlock_ = block;
   // Build the DOM.
-  /** @type {SVGElement} */
-  this.fieldGroup_ = Blockly.utils.createSvgElement('g', {}, null);
-  if (!this.visible_) {
-    this.fieldGroup_.style.display = 'none';
-  }
-  /** @type {SVGElement} */
-  this.imageElement_ = Blockly.utils.createSvgElement(
-    'image',
-    {
-      'height': this.height_ + 'px',
-      'width': this.width_ + 'px'
-    },
-    this.fieldGroup_);
+  var offsetY = 6 - Blockly.BlockSvg.FIELD_HEIGHT;
+  this.fieldGroup_ = Blockly.createSvgElement('g', {}, null);
+  this.imageElement_ = Blockly.createSvgElement('image',
+      {'height': this.height_ + 'px',
+       'width': this.width_ + 'px',
+       'y': offsetY}, this.fieldGroup_);
   this.setValue(this.src_);
-  this.sourceBlock_.getSvgRoot().appendChild(this.fieldGroup_);
+  if (goog.userAgent.GECKO) {
+    // Due to a Firefox bug which eats mouse events on image elements,
+    // a transparent rectangle needs to be placed on top of the image.
+    this.rectElement_ = Blockly.createSvgElement('rect',
+        {'height': this.height_ + 'px',
+         'width': this.width_ + 'px',
+         'y': offsetY,
+         'fill-opacity': 0}, this.fieldGroup_);
+  }
+  block.getSvgRoot().appendChild(this.fieldGroup_);
 
   // Configure the field to be transparent with respect to tooltips.
-  this.setTooltip(this.sourceBlock_);
-  Blockly.Tooltip.bindMouseEvents(this.imageElement_);
-
-  this.maybeAddClickHandler_();
+  var topElement = this.rectElement_ || this.imageElement_;
+  topElement.tooltip = this.sourceBlock_;
+  Blockly.Tooltip.bindMouseEvents(topElement);
 };
 
 /**
@@ -104,19 +115,7 @@ Blockly.FieldImage.prototype.dispose = function() {
   goog.dom.removeNode(this.fieldGroup_);
   this.fieldGroup_ = null;
   this.imageElement_ = null;
-};
-
-/**
- * Bind events for a mouse down on the image, but only if a click handler has
- * been defined.
- * @private
- */
-Blockly.FieldImage.prototype.maybeAddClickHandler_ = function() {
-  if (this.clickHandler_) {
-    this.mouseDownWrapper_ =
-        Blockly.bindEventWithChecks_(this.fieldGroup_, 'mousedown', this,
-        this.onMouseDown_);
-  }
+  this.rectElement_ = null;
 };
 
 /**
@@ -125,7 +124,8 @@ Blockly.FieldImage.prototype.maybeAddClickHandler_ = function() {
  *     link to for its tooltip.
  */
 Blockly.FieldImage.prototype.setTooltip = function(newTip) {
-  this.imageElement_.tooltip = newTip;
+  var topElement = this.rectElement_ || this.imageElement_;
+  topElement.tooltip = newTip;
 };
 
 /**
@@ -150,7 +150,7 @@ Blockly.FieldImage.prototype.setValue = function(src) {
   this.src_ = src;
   if (this.imageElement_) {
     this.imageElement_.setAttributeNS('http://www.w3.org/1999/xlink',
-        'xlink:href', src || '');
+        'xlink:href', goog.isString(src) ? src : '');
   }
 };
 
@@ -173,22 +173,4 @@ Blockly.FieldImage.prototype.setText = function(alt) {
  */
 Blockly.FieldImage.prototype.render_ = function() {
   // NOP
-};
-
-/**
- * Images are fixed width, no need to update.
- * @private
- */
-Blockly.FieldImage.prototype.updateWidth = function() {
- // NOP
-};
-
-/**
- * If field click is called, and click handler defined,
- * call the handler.
- */
-Blockly.FieldImage.prototype.showEditor_ = function() {
-  if (this.clickHandler_) {
-    this.clickHandler_(this);
-  }
 };
