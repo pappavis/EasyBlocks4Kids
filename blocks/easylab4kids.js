@@ -2128,15 +2128,10 @@ Blockly.Blocks['declare_CapacitiveTouch'] = {
         // Blockly.Variables.predefinedVars.push(globalVar1);
 
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-        this.setColour(75); // this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setColour(85);
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("https://cdn.instructables.com/F2X/LMHK/HH11RZS1/F2XLMHKHH11RZS1.SMALL.jpg", 32, 32))
-            .appendField("vinger gevoelig sensor")
-            .appendField(new Blockly.FieldDropdown([
-                ["Data", "data"],
-                ["Buiten sensor bereik", "change"],
-                ["Slide [slip sensor]", "slide"]
-            ]), "DECLARE_TOUCH1_STATE");
+            .appendField("vinger gevoelig sensor");
         this.appendDummyInput()
             .appendField(" Identificatie: ")
             .appendField(new Blockly.FieldDropdown([
@@ -2161,11 +2156,6 @@ Blockly.Blocks['declare_CapacitiveTouch'] = {
                 ["Touchpad - Grove QTOUCH", "QTOUCH"]
             ]), "DECLARE_TOUCH1_CONTROLLER1");
 
-        this.appendValueInput("DECLARE_TOUCH1_PWM_POORTNUMMER", "String")
-            .appendField("PWM IO Poort")
-            .setCheck("String");
-        this.setTooltip("default EasyLab4Kids Servo op D10");
-
         this.appendValueInput("DECLARE_TOUCH1_IO_POORTNUMMER", "String")
             .appendField("Tin folie IO-poort")
             .setCheck("String");
@@ -2189,7 +2179,7 @@ Blockly.Blocks['event_CapacitiveTouch'] = {
         // Blockly.Variables.predefinedVars.push(globalVar1);
 
         this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-        this.setColour(75); // this.setColour(Blockly.Blocks.procedures.HUE);
+        this.setColour(85); // this.setColour(Blockly.Blocks.procedures.HUE);
         this.appendStatementInput("EVENT_TOUCH1_DO")
             .appendField(new Blockly.FieldImage("https://cdn.instructables.com/F2X/LMHK/HH11RZS1/F2XLMHKHH11RZS1.SMALL.jpg", 32, 32))
             .appendField("vinger gevoelig sensor")

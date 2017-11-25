@@ -1727,7 +1727,6 @@ Blockly.Arduino.declare_CapacitiveTouch = function() {
         var ErrNr1 = Math.floor((Math.random() * 100) + 1);
         var switch_state1 = this.getFieldValue('DECLARE_TOUCH1_STATE');
         var apparaat_poortNr1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 8;
-        var apparaat_PWMpoortNr1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 10;
         var apparaat_type1 = this.getFieldValue('DECLARE_TOUCH1_CONTROLLER1');
         var sensor_naam1 = this.getFieldValue('DECLARE_TOUCH1_NAAM1') + veranderlike1;
         var sensor_freq1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_FREQ', Blockly.Arduino.ORDER_ATOMIC) || 50;
@@ -1737,11 +1736,17 @@ Blockly.Arduino.declare_CapacitiveTouch = function() {
         apparaat_type1 = apparaat_type1 == "DIGITAL" ? "digital" : "analog";
         var sensor_scale_max1 = sensor_scale_max1 > 180 ? 180 : sensor_scale_max1;
         var sensor_scale_min1 = sensor_scale_min1 < 0 || sensor_scale_min1 > 180 ? 0 : sensor_scale_min1;
+
+        var isDigital1 = false;
+        var strDigital1 = ".Sensor(" + apparaat_poortNr1 + ");";
+        try {
+            if (apparaat_poortNr1 >= 0) {
+                strDigital1 = ".Sensor().Digital(" + apparaat_poortNr1 + ");";
+            }
+        } catch (error) {}
+
         Blockly.Arduino.definitions_["DECLARE_TOUCH1_data" + sensor_naam1] = globalVar1;
-        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data1" + sensor_naam1] = " var " + sensor_naam1 + "_staat = '';";
-        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data2" + sensor_naam1] = " var " + sensor_naam1 + "_value = '';";
-        Blockly.Arduino.setups_['DECLARE_CapacitiveTouch' + sensor_naam1] = " var " + sensor_naam1 + " = new five.Sensor({pin: " + apparaat_poortNr1 + ", type: \"" + apparaat_type1 + "\", freq: " + sensor_freq1 + ", threshold: 5});";
-        // Blockly.Arduino.setups_['TOUCH1_scale' + veranderlike1] = sensor_naam1 + ".scaleTo(0, " + sensor_freq1 + ");";
+        Blockly.Arduino.setups_['DECLARE_CapacitiveTouch' + sensor_naam1] = " var " + sensor_naam1 + " = new five" + strDigital1;
 
         Blockly.Variables.predefinedVars.push(sensor_naam1);
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_staat");
@@ -1769,35 +1774,26 @@ Blockly.Arduino.event_CapacitiveTouch = function() {
         var apparaat_PWMpoortNr1 = Blockly.Arduino.valueToCode(this, 'EVENT_TOUCH1_IO_POORTNUMMER', Blockly.Arduino.ORDER_ATOMIC) || 10;
         var apparaat_type1 = this.getFieldValue('EVENT_TOUCH1_CONTROLLER1');
         var sensor_naam1 = this.getFieldValue('EVENT_TOUCH1_NAAM1') + veranderlike1;
-        var sensor_freq1 = Blockly.Arduino.valueToCode(this, 'DECLARE_TOUCH1_FREQ', Blockly.Arduino.ORDER_ATOMIC) || 50;
+        var sensor_freq1 = Blockly.Arduino.valueToCode(this, 'EVENT_TOUCH1_FREQ', Blockly.Arduino.ORDER_ATOMIC) || 10;
         var globalVar1 = "var " + sensor_naam1 + ";\n";
 
         veranderlike1 = sensor_naam1;
-        apparaat_type1 = apparaat_type1 == "DIGITAL" ? "digital" : "analog";
-        var sensor_scale_max1 = sensor_scale_max1 > 180 ? 180 : sensor_scale_max1;
-        var sensor_scale_min1 = sensor_scale_min1 < 0 || sensor_scale_min1 > 180 ? 0 : sensor_scale_min1;
-        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data" + sensor_naam1] = globalVar1;
-        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data3" + sensor_naam1] = " var " + sensor_naam1 + "_scaled = '';";
-        Blockly.Arduino.definitions_["DECLARE_TOUCH1_data4" + sensor_naam1] = " var " + sensor_naam1 + "_raw = '';";
-        // Blockly.Arduino.setups_['TOUCH1_scale' + veranderlike1] = sensor_naam1 + ".scaleTo(0, " + sensor_freq1 + ");";
 
         Blockly.Variables.predefinedVars.push(sensor_naam1);
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_scaled");
-        Blockly.Variables.predefinedVars.push(sensor_naam1 + "_raw");
 
         var branch = Blockly.Arduino.statementToCode(this, 'EVENT_TOUCH1_DO');
         //  var code = 'if (' + argument + ') {\n' + branch + '\n}';
-        var code = "\n" + sensor_naam1 + ".scale(" + sensor_scale_min1 + ", " + sensor_scale_max1 + ").on(\"" + switch_state1 + "\", function() {\n";
+        var code = "\n" + sensor_naam1 + ".on(\"" + switch_state1 + "\", function() {\n";
         code += "     " + sensor_naam1 + "_staat = \"" + switch_state1 + "\";\n";
         code += "     " + sensor_naam1 + "_value = " + sensor_naam1 + ".value;\n";
-        code += "     " + sensor_naam1 + "_scaled = " + sensor_naam1 + ".scaled;\n";
-        code += "     " + sensor_naam1 + "_raw = " + sensor_naam1 + ".raw;\n";
+        code += "     " + sensor_naam1 + "_scaled = " + sensor_naam1 + ".scaleTo(0, 255);\n";
         code += "  " + branch + "\n";
         code += "});\n";
 
-        // console.log(" TOUCH1_close_open.branch:\n" + branch);
+        // console.log(" event_CapacitiveTouch.branch:\n" + branch);
     } catch (error4) {
-        console.log("FOUT declare_CapacitiveTouch:\n" + error4);
+        console.log("FOUT event_CapacitiveTouch:\n" + error4);
     }
     return code + '\n';
 }; // einde event_CapacitiveTouch

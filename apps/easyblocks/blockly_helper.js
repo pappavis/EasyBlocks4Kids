@@ -215,7 +215,7 @@ function uploadCode(code, callback) {
         var url1 = document.getElementById('RobotAdres1').value;
 
         if (url1 == "") {
-            alert("EasyServer adres onbekend, bijvoorbeeld http://10.0.0.15:8081/easyblocks_post");
+            alert("EasyServer adres onbekend, bijvoorbeeld http://localhost:8081/easyblocks_post");
         }
 
         var url_met_get = url1 + "?data=" + encodeURIComponent(JSON.stringify({ "jwt_token": "hey@mail.com", "javascript_code": JSON.stringify(Blockly.Arduino.workspaceToCode()) }));
