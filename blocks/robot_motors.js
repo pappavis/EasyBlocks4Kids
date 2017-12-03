@@ -112,7 +112,7 @@ Blockly.Blocks['declare_motorshield'] = {
                 ["Arduino Motor Shield R3.3", "ARDUINO_MOTOR_SHIELD_R3_3"],
                 ["Arduino NKC Electronics kit", "NKC_ELECTRONICS_KIT"],
                 ["Arduino Pololu DRV8835 Shield", "POLOLU_DRV8835_SHIELD"],
-                ["Arduino Pololu DRV8835 Shield", "POLOLU_VNH5019_SHIELD"],
+                ["Arduino Pololu DRV5019 Shield", "POLOLU_VNH5019_SHIELD"],
                 ["Arduino Rugged Circuits Rugged Motor Driver", "RUGGED_CIRCUITS"],
                 ["Arduino SeeedStudio H-bridge", "SEEED_STUDIO"],
                 ["Arduino Sparkfun Ardumoto", "SPARKFUN_ARDUMOTO"],

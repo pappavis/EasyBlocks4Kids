@@ -79,7 +79,7 @@ CHANGELOG EasyLab4kids  zie http://erasmus-ict.nl, contact MICHIEL ERASMUS tel: 
  1.04 2017.11.20
  - WYSIGING: build.py wou nie meer compile, daarom oorgeneem direk van github blockly.
 
- 1.05 2017.11.25
+ 1.05 2017.12.03
  - toegevoegd: capactive touch sensor.
 
 

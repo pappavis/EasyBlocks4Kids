@@ -93,8 +93,12 @@ Blockly.Arduino.declare_motorshield = function() {
         var pwm_poortNr1 = -1;
         var dir_poortNr1 = -1;
 
+        var motorAofB = "" ;
+        var altDeclare1 = -1;
+
         switch (apparaat_type1) {
             case "DEFAULT": //easylab4kids
+                altDeclare1 = -1;
                 if (sensor_naam1 == "L923motorshield_l_voor" || sensor_naam1 == "L923motorshield_l_achter") {
                     pwm_poortNr1 = 3;
                     dir_poortNr1 = 5
@@ -106,14 +110,60 @@ Blockly.Arduino.declare_motorshield = function() {
                 Blockly.Arduino.setups_['DECLARE_motorshield' + veranderlike1] = "  " + sensor_naam1 + " = new five.Motor({pins: {pwm: " + pwm_poortNr1 + ", dir: " + dir_poortNr1 + "}, invertPWM: true});";
                 break;
             case "ARDUINO_MOTOR_SHIELD_R3_1":
+                altDeclare1 = 1;
                 break;
+            case "ARDUINO_MOTOR_SHIELD_R3_2":
+                altDeclare1 = 1;
+                break;
+            case "DF_ROBOT":
+                altDeclare1 = 1;
+                break;
+            case "RUGGED_CIRCUITS":
+                altDeclare1 = 1;
+                break;
+            case  "SPARKFUN_ARDUMOTO":
+                altDeclare1 = 1;
+                break;
+
+            case "SEEED_STUDIO":
+                altDeclare1 = 1;
+                break;
+
+            case "FREETRONICS_HBRIDGE":
+                altDeclare1 = 1;
+                break;
+
+            case "H_BRIDGE":
+                altDeclare1 = 1;
+                break;
+                                
+            case "ADAFRUIT_V1":
+                altDeclare1 = 2;
+                break;
+            case "ADAFRUIT_V2":
+                altDeclare1 = 2;
+                break;
+            case "POLOLU_DRV8835_SHIELD":
+                altDeclare1 = 2;
+                break;                
             default:
                 if (apparaat_poortNr1 == "L923wiel_voor_R1") { pwm_poortNr1 = 3; }
-                Blockly.Arduino.setups_['DECLARE_motorshield' + veranderlike1] = "  " + sensor_naam1 + " = new five.Motor({pwm: " + apparaat_poortNr1 + ", CONTROLLER: \"" + apparaat_type1 + "\", freq: " + sensor_freq1 + ", threshold: 5, invertPWM: true});";
+                Blockly.Arduino.setups_['DECLARE_motorshield' + veranderlike1] = "  " + sensor_naam1 + " = new five.Motor({pwm: " + apparaat_poortNr1 + ", controller: \"" + apparaat_type1 + "\", freq: " + sensor_freq1 + ", threshold: 5, invertPWM: true});";
                 break;
         }
-
-        // Blockly.Arduino.setups_['DECLARE_motorshield_stop' + veranderlike1] = sensor_naam1 + ".stop();  //voorkom dat jou robot op hol slaan.";
+        
+        switch (altDeclare1) {
+            case 1:
+                motorAofB = sensor_naam1 == "L923motorshield_l_voor" ? "A" : "B" ;        
+                break;
+            case 2:
+                motorAofB = sensor_naam1 ==  "L923motorshield_l_voor" ? "M1" : "M2" ;        
+                break;
+            }
+        
+        if (altDeclare1 > 0) {
+            Blockly.Arduino.setups_['DECLARE_motorshield' + veranderlike1] = "  " + sensor_naam1 + " = new five.Motor(five.Motor.SHIELD_CONFIGS." + apparaat_type1 + "." + motorAofB + ");";
+        }
 
         Blockly.Variables.predefinedVars.push(sensor_naam1);
         Blockly.Variables.predefinedVars.push(sensor_naam1 + "_opdracht");
