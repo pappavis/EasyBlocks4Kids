@@ -130,7 +130,7 @@ MacBook$ python ./build.py
 
 Produksie omgeving
 ---
-Live site kyk op http://erasmus-ict.nl/easylab4kids
+Live site kyk op http://easylab4kids.nl/easyblocks4kids
 
 Online lesse
 ---
