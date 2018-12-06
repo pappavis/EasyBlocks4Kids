@@ -1,4 +1,6 @@
 # EasyBlocks4Kids
+Johnny-five blockly visual programming environment for roboticcs & sensors <br/>
+<br/>
 Arduino en Raspberry Pi visueel programmering robotten met #easylab4kids <br/>
 <br/>
 Wat nog meer?<br/>
